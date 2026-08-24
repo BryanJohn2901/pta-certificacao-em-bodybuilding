@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificação em Bodybuilding · Longa C</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#1d1d1b', surface: '#262623', primary: '#c82328',
+                            primaryHover: '#8f181c', textPrimary: '#ffffff',
+                            textSecondary: '#e9e7e3', textMuted: '#a1a1aa',
+                            darkgray: '#151514', success: '#0CC143'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        display: ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        button { border-radius: 0; }
+        .site-grid { width:100%; max-width:1300px; margin:0 auto; padding:0 1.5rem; }
+        .hero-center-shade {
+            background: radial-gradient(ellipse 80% 75% at 50% 48%, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 46%, transparent 76%);
+        }
+        .faq-a { max-height:0; overflow:hidden; opacity:0; transition: all .3s ease; }
+        .faq-item.open .faq-a { max-height:320px; opacity:1; padding-bottom:1rem; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-textPrimary font-sans antialiased selection:bg-brand-primary selection:text-white pb-20 md:pb-0">
+
+    <header class="relative min-h-[95vh] flex items-center pt-16 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/bg-hero.webp" alt="" class="w-full h-full object-cover" loading="eager">
+            <div class="absolute inset-0 bg-[#1d1d1b]/35"></div>
+            <div class="absolute inset-0 hero-center-shade"></div>
+        </div>
+        <div class="site-grid relative z-10 flex flex-col items-center text-center" data-aos="fade-up">
+            
+            <div class="inline-block bg-brand-primary px-10 py-4 mb-6 text-white text-xs font-bold uppercase tracking-[0.15em]">
+                Exclusivo para profissionais e estudantes de Educação Física
+            </div>
+            <div class="mb-4 w-full flex justify-center">
+                <h1 class="sr-only">Certificação em Bodybuilding e Estética Corporal</h1>
+                <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding e Estética Corporal" class="w-full max-w-3xl h-auto">
+            </div>
+            <h2 class="text-3xl md:text-5xl font-display font-black uppercase mt-8 max-w-4xl leading-tight">Aprenda com os maiores treinadores de atletas de alto nível no Brasil.</h2>
+            <p class="text-lg text-brand-textSecondary max-w-2xl mt-6 font-medium leading-relaxed">Um domingo inteiro de protocolos avançados de hipertrofia e estética corporal, ao vivo, com certificado de conclusão.</p>
+            <button onclick="abrirPopup()" class="mt-10 w-full sm:w-auto bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Quero garantir minha vaga</button>
+            <p class="text-white text-sm mt-6 max-w-2xl">Domingo, 27 de setembro · 8h30 às 18h · 8h de conteúdo ao vivo · certificado de conclusão · Cupom Ouro PTA para inscritos</p>
+        </div>
+    </header>
+    <div class="w-full bg-brand-primary py-4 relative z-20">
+        <div class="site-grid text-center">
+            <p class="text-white font-display font-bold text-sm md:text-base tracking-[0.1em] uppercase">8h de conteúdo ao vivo · Certificado de conclusão · O começo da sua especialização em bodybuilding</p>
+        </div>
+    </div>
+    <section class="py-24 bg-brand-bg">
+        <div class="site-grid">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight mb-6 max-w-4xl">Um domingo inteiro AO VIVO dentro da preparação de um atleta de alto nível.</h2>
+            <p class="text-white max-w-3xl mb-10">8 horas de conteúdo ao vivo, direto ao ponto, com quem faz isso todos os dias. E um certificado que marca o começo da sua especialização em bodybuilding.</p>
+            <ul class="space-y-3 text-white mb-16">
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>8 horas de conteúdo, 100% online e ao vivo</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Material de apoio digital</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Certificado de conclusão com carga horária</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Cupom Ouro para a Pós em Bodybuilding e Estética Corporal</li>
+            </ul>
+            <div class="border border-white/10">
+                <div class="flex gap-4 px-5 py-3 border-b border-white/10"><span class="font-mono text-sm w-14 shrink-0">8h30</span><span>Abertura</span></div>
+                <div class="flex gap-4 px-5 py-3 border-b border-white/10"><span class="font-mono text-sm w-14 shrink-0">9h00</span><span>Ciência da hipertrofia</span></div>
+                <div class="flex gap-4 px-5 py-3 border-b border-white/10"><span class="font-mono text-sm w-14 shrink-0">11h00</span><span>Periodização</span></div>
+                <div class="flex gap-4 px-5 py-3 border-b border-white/10"><span class="font-mono text-sm w-14 shrink-0">14h00</span><span>Preparação de palco</span></div>
+                <div class="flex gap-4 px-5 py-3 border-b border-white/10"><span class="font-mono text-sm w-14 shrink-0">16h00</span><span>Saúde articular</span></div>
+                <div class="flex gap-4 px-5 py-3"><span class="font-mono text-sm w-14 shrink-0">17h00</span><span>Farmacologia esportiva</span></div>
+            </div>
+            <p class="text-brand-textMuted text-xs mt-4">Horários provisórios — a grade oficial entra quando sair.</p>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-surface">
+        <div class="site-grid">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight mb-4 max-w-4xl">Preparar um atleta exige cinco áreas. Você vai ver as cinco em um domingo.</h2>
+            <p class="text-white max-w-3xl mb-12">Ciência da hipertrofia, periodização, preparação de palco, saúde articular e farmacologia esportiva. Cinco especialidades no mesmo domingo.</p>
+            <div class="space-y-6 max-w-3xl">
+                <div class="flex gap-6 items-baseline border-b border-white/10 pb-4"><span class="font-display font-black italic text-brand-primary text-2xl">01</span><div><b class="font-display font-black text-white">Ciência da hipertrofia</b><p class="text-brand-textMuted text-sm">Por que o músculo cresce e o que decide a resposta de cada aluno</p></div></div>
+                <div class="flex gap-6 items-baseline border-b border-white/10 pb-4"><span class="font-display font-black italic text-brand-primary text-2xl">02</span><div><b class="font-display font-black text-white">Periodização</b><p class="text-brand-textMuted text-sm">Da avaliação à estrutura do programa</p></div></div>
+                <div class="flex gap-6 items-baseline border-b border-white/10 pb-4"><span class="font-display font-black italic text-brand-primary text-2xl">03</span><div><b class="font-display font-black text-white">Preparação de palco</b><p class="text-brand-textMuted text-sm">Como se conduz uma preparação do off-season ao palco</p></div></div>
+                <div class="flex gap-6 items-baseline border-b border-white/10 pb-4"><span class="font-display font-black italic text-brand-primary text-2xl">04</span><div><b class="font-display font-black text-white">Saúde articular</b><p class="text-brand-textMuted text-sm">Como manter o aluno treinando pesado a preparação inteira</p></div></div>
+                <div class="flex gap-6 items-baseline"><span class="font-display font-black italic text-brand-primary text-2xl">05</span><div><b class="font-display font-black text-white">Farmacologia esportiva</b><p class="text-brand-textMuted text-sm">O que o treinador precisa entender sobre recursos ergogênicos</p></div></div>
+            </div>
+            <button onclick="abrirPopup()" class="bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300 mt-12">Quero ver a grade completa</button>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-bg">
+        <div class="site-grid">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight mb-4 max-w-4xl">Feito para quem quer resultado estético de verdade no palco ou na academia.</h2>
+            <p class="text-white mb-12">Você não precisa ter atleta hoje. O protocolo é o mesmo; o que muda é o prazo.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="border border-white/10">
+                    <div class="bg-brand-primary text-white font-display font-black text-xs tracking-widest uppercase px-6 py-3">É para você se</div>
+                    <ul class="p-6 space-y-3 text-white text-sm">
+                        <li>Treinador que já prepara atleta e quer refinar o protocolo</li>
+                        <li>Quem quer começar a treinar atleta e não sabe por onde</li>
+                        <li>Personal de academia com aluno que quer shape, massa e definição</li>
+                        <li>Quem atende aluno avançado que parou de evoluir</li>
+                        <li>Quem quer ser reconhecido como treinador de bodybuilding, não como personal genérico</li>
+                        <li>Quem quer cobrar mais e precisa de argumento técnico para isso</li>
+                    </ul>
+                </div>
+                <div class="border border-white/10">
+                    <div class="bg-brand-surface text-brand-textMuted font-display font-black text-xs tracking-widest uppercase px-6 py-3">Não é para você se</div>
+                    <ul class="p-6 space-y-3 text-brand-textMuted text-sm">
+                        <li>Procura treino básico de academia</li>
+                        <li>Quer conteúdo introdutório</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-surface">
+        <div class="site-grid">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight mb-3">Saia do treino comum e prescreva como os maiores treinadores do Brasil.</h2>
+            <p class="text-brand-textMuted text-lg mb-12">Volume, prioridade de grupamento, bulking e cutting. Direto ao ponto, para aplicar já na segunda-feira.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Prioridade de grupamento</h3><p class="text-brand-textMuted text-sm">Qual músculo puxar primeiro e o que segurar, para o shape crescer com forma</p></div>
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Volume e intensidade</h3><p class="text-brand-textMuted text-sm">Quantas séries, a que distância da falha e com que frequência</p></div>
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Bulking e cutting</h3><p class="text-brand-textMuted text-sm">Como as fases funcionam na prática, com prazo de palco na cabeça</p></div>
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Atleta feminina</h3><p class="text-brand-textMuted text-sm">O que muda na preparação e na prioridade para glúteos e pernas</p></div>
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Articulação e longevidade</h3><p class="text-brand-textMuted text-sm">Como manter o atleta treinando pesado a preparação inteira sem quebrar</p></div>
+                <div class="border border-white/10 p-8"><h3 class="font-display font-black text-white mb-2">Ajuste de protocolo</h3><p class="text-brand-textMuted text-sm">O que fazer quando o atleta faz tudo certo e a resposta não vem</p></div>
+            </div>
+            <p class="text-brand-textMuted mt-10">Serve para o atleta que sobe no palco e para o aluno que só quer aparecer de camiseta. Muda o prazo e a intensidade — não muda o critério.</p>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-surface relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/bg-blur.webp" alt="" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-brand-surface/80"></div>
+        </div>
+        <div class="site-grid relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-display font-black uppercase leading-tight mb-4">Aprenda a preparar um atleta do OFF-SEASON ao PRO CARD.</h2>
+            <p class="text-brand-textMuted text-lg mb-16">Ponto fraco, fases encaixadas no calendário e reta final. Um domingo inteiro sobre preparação de atleta.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 relative mb-12">
+                <div class="absolute hidden md:block top-6 left-0 right-0 h-0.5 bg-white/10"></div>
+                <div class="relative z-10 flex flex-col items-center max-w-[200px]"><div class="w-12 h-12 bg-brand-bg border-2 border-brand-primary flex items-center justify-center mb-4 text-brand-primary"><i class="fas fa-dumbbell"></i></div><h4 class="font-display font-black tracking-widest mb-2">OFF-SEASON</h4><p class="text-sm text-brand-textMuted">Onde se constrói o ponto fraco</p></div>
+                <div class="relative z-10 flex flex-col items-center max-w-[200px]"><div class="w-12 h-12 bg-brand-bg border-2 border-brand-primary flex items-center justify-center mb-4 text-brand-primary"><i class="fas fa-calendar-check"></i></div><h4 class="font-display font-black tracking-widest mb-2">PRÉ-CONTEST</h4><p class="text-sm text-brand-textMuted">Fases encaixadas no calendário</p></div>
+                <div class="relative z-10 flex flex-col items-center max-w-[200px]"><div class="w-12 h-12 bg-brand-bg border-2 border-brand-primary flex items-center justify-center mb-4 text-brand-primary"><i class="fas fa-trophy"></i></div><h4 class="font-display font-black tracking-widest mb-2">PALCO</h4><p class="text-sm text-brand-textMuted">Reta final e apresentação</p></div>
+                <div class="relative z-10 flex flex-col items-center max-w-[200px]"><div class="w-12 h-12 bg-brand-bg border-2 border-brand-primary flex items-center justify-center mb-4 text-brand-primary"><i class="fas fa-id-card"></i></div><h4 class="font-display font-black tracking-widest mb-2">PRO CARD</h4><p class="text-sm text-brand-textMuted">O que separa o amador do profissional</p></div>
+            </div>
+            <ul class="text-left max-w-2xl mx-auto space-y-3 text-white mb-12">
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Como identificar o aluno que tem perfil para competir</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Correção de ponto fraco dentro do prazo da preparação</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Bulking e cutting encaixados no calendário do palco</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>O que muda na reta final</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Como conduzir a primeira preparação sem errar o básico</li>
+            </ul>
+            <button onclick="abrirPopup()" class="bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Quero aprender a preparar atleta</button>
+        </div>
+    </section>
+    
+    <section class="py-24 bg-brand-bg">
+        <div class="site-grid">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight max-w-3xl mx-auto">Aprenda com os maiores treinadores de atletas de alto nível no Brasil.</h2>
+                
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-brand-surface border border-white/10 overflow-hidden" data-aos="fade-up">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <img src="../assets/professores/walter-krause.webp" alt="Walter Krause" class="w-full h-full object-cover object-top" loading="lazy" width="900" height="1125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-surface via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-flex items-center gap-2 bg-brand-primary text-white font-display font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 mb-3" style="clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);"><i class="fas fa-flask"></i> Ciência da hipertrofia</span>
+                        <h3 class="font-display font-black text-white text-xl mb-2">Walter Krause</h3>
+                        <p class="text-brand-textMuted text-sm mb-4">Doutor e pós-doutor em Educação Física. Líder do MORFOGEN, grupo de pesquisa em morfologia e genética no treinamento de força da UNIFESP.</p>
+                        <p class="text-white text-sm"><strong class="font-display font-black uppercase">No domingo:</strong> por que o músculo cresce e o que decide a resposta de cada aluno.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-surface border border-white/10 overflow-hidden" data-aos="fade-up">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <img src="../assets/professores/carlos-garon.webp" alt="Carlos Garon" class="w-full h-full object-cover object-top" loading="lazy" width="900" height="1125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-surface via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-flex items-center gap-2 bg-brand-primary text-white font-display font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 mb-3" style="clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);"><i class="fas fa-chart-line"></i> Periodização</span>
+                        <h3 class="font-display font-black text-white text-xl mb-2">Carlos Garon</h3>
+                        <p class="text-brand-textMuted text-sm mb-4">Treinador de atleta profissional e palestrante do Congresso Brasileiro de Musculação 2025, nas edições do Rio de Janeiro e de Porto Alegre. Mais de 90 mil seguidores acompanhando o conteúdo técnico dele.</p>
+                        <p class="text-white text-sm"><strong class="font-display font-black uppercase">No domingo:</strong> da avaliação à estrutura do programa, estratégias de periodização e métodos avançados para membros inferiores com ênfase em glúteos.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-surface border border-white/10 overflow-hidden" data-aos="fade-up">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <img src="../assets/professores/ray-milet.webp" alt="Ray Milet" class="w-full h-full object-cover object-top" loading="lazy" width="900" height="1125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-surface via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-flex items-center gap-2 bg-brand-primary text-white font-display font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 mb-3" style="clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);"><i class="fas fa-medal"></i> Preparação de palco</span>
+                        <h3 class="font-display font-black text-white text-xl mb-2">Ray Milet</h3>
+                        <p class="text-brand-textMuted text-sm mb-4">29 atletas profissionalizadas na NPC, 11 títulos e 62 pódios na IFBB Pro League e 12 atletas classificadas ao palco do Olympia.</p>
+                        <p class="text-white text-sm"><strong class="font-display font-black uppercase">No domingo:</strong> como se conduz uma preparação do off-season ao palco.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-surface border border-white/10 overflow-hidden" data-aos="fade-up">
+                    <div class="aspect-[4/5] bg-[repeating-linear-gradient(135deg,#2f2f2b_0_8px,#292926_8px_16px)] flex items-center justify-center"><span class="text-brand-textMuted font-mono text-sm opacity-50">foto 4:5</span></div>
+                    <div class="p-6">
+                        <span class="inline-flex items-center gap-2 bg-brand-primary text-white font-display font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 mb-3" style="clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);"><i class="fas fa-heart-pulse"></i> Saúde articular</span>
+                        <h3 class="font-display font-black text-white text-xl mb-2">Bruna Massaroto</h3>
+                        <p class="text-brand-textMuted text-sm mb-4">Doutora e pós-doutora em Ciências da Reabilitação.</p>
+                        <p class="text-white text-sm"><strong class="font-display font-black uppercase">No domingo:</strong> treino articular na performance do bodybuilder — como manter o atleta treinando pesado a preparação inteira.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-surface border border-white/10 overflow-hidden md:col-span-2 lg:col-span-1" data-aos="fade-up">
+                    <div class="aspect-[4/5] bg-[repeating-linear-gradient(135deg,#2f2f2b_0_8px,#292926_8px_16px)] flex items-center justify-center"><span class="text-brand-textMuted font-mono text-sm opacity-50">foto 4:5</span></div>
+                    <div class="p-6">
+                        <span class="inline-flex items-center gap-2 bg-brand-primary text-white font-display font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 mb-3" style="clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);"><i class="fas fa-pills"></i> Farmacologia esportiva</span>
+                        <h3 class="font-display font-black text-white text-xl mb-2">Adam Abbas</h3>
+                        <p class="text-brand-textMuted text-sm mb-4">Bioquímico e farmacêutico clínico. Pós-graduado em Farmácia Clínica pelo Instituto Albert Einstein e especialista em Farmacologia pela Harvard Medical School.</p>
+                        <p class="text-white text-sm"><strong class="font-display font-black uppercase">No domingo:</strong> o que o treinador precisa entender sobre recursos ergogênicos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center"><button onclick="abrirPopup()" class="bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Quero aprender com eles</button></div>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-bg">
+        <div class="site-grid max-w-xl mx-auto">
+            <div class="border-2 border-brand-primary p-8 md:p-12 text-center">
+                <h2 class="text-3xl font-display font-black uppercase mb-3">8 horas de conteúdo avançado por R$ 19,90.</h2>
+                <ul class="text-left text-sm space-y-3 my-8 text-brand-textSecondary">
+                    <li>8 horas de conteúdo ao vivo, num domingo inteiro</li>
+                    <li>Material de apoio digital</li>
+                    <li>Certificado de conclusão com carga horária — o começo da sua especialização</li>
+                    <li>Cupom Ouro PTA para a Pós em Bodybuilding e Estética Corporal</li>
+                </ul>
+                <p class="text-brand-textMuted text-sm mb-6">Domingo, 27 de setembro de 2026 · 8h30 às 18h · ao vivo e online</p>
+                <span class="text-brand-textMuted line-through font-bold">De R$ 97</span>
+                <div class="text-6xl font-display font-black italic leading-none my-2">R$ 19,90</div>
+                <p class="text-white text-xs uppercase tracking-widest mb-6">Vagas limitadas por lote. Quando o lote virar, esse preço acaba.</p>
+                <button onclick="abrirPopup()" class="w-full bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Comprar meu ingresso</button>
+                <div class="flex items-center justify-center gap-3 mt-6 opacity-70"><i class="fab fa-pix text-2xl"></i><i class="fab fa-cc-visa text-2xl"></i><i class="fab fa-cc-mastercard text-2xl"></i></div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-surface relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/bg-abstract.webp" alt="" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-brand-surface/85"></div>
+        </div>
+        <div class="site-grid relative z-10">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight mb-6 max-w-4xl">A certificação é o começo da sua especialização. A pós é a especialização inteira.</h2>
+            <p class="text-brand-textMuted mb-3 max-w-3xl">Todo inscrito recebe o Cupom Ouro PTA: condição especial na Pós em Bodybuilding e Estética Corporal — 18 meses, 360 horas, 18 professores, certificado reconhecido pelo MEC pela portaria nº 1.058. Mais de 4.000 já se formaram nela.</p>
+            <p class="text-brand-textMuted text-sm mb-10">Só é liberado para quem está inscrito na imersão.</p>
+            <div class="border border-white/10 grid sm:grid-cols-2 text-sm bg-brand-bg mb-10">
+                <div class="p-6">
+                    <h4 class="font-display font-black uppercase tracking-widest mb-4">Certificação <span class="bg-brand-primary text-[10px] px-2 py-0.5 ml-2">UM DOMINGO</span></h4>
+                    <dl class="space-y-3"><div><dt class="text-brand-textMuted text-xs">Duração</dt><dd>8 horas, num domingo</dd></div><div><dt class="text-brand-textMuted text-xs">Formato</dt><dd>Ao vivo e online</dd></div><div><dt class="text-brand-textMuted text-xs">Professores</dt><dd>5</dd></div><div><dt class="text-brand-textMuted text-xs">Entrega</dt><dd>Certificado de conclusão com carga horária</dd></div><div><dt class="text-brand-textMuted text-xs">Preço</dt><dd>R$ 19,90</dd></div></dl>
+                </div>
+                <div class="p-6 bg-white/5 border-t sm:border-t-0 sm:border-l border-white/10">
+                    <h4 class="font-display font-black uppercase tracking-widest mb-4">Pós-graduação <span class="bg-brand-primary text-[10px] px-2 py-0.5 ml-2">18 MESES</span></h4>
+                    <dl class="space-y-3"><div><dt class="text-brand-textMuted text-xs">Duração</dt><dd>18 meses, 360 horas</dd></div><div><dt class="text-brand-textMuted text-xs">Formato</dt><dd>Pós completa</dd></div><div><dt class="text-brand-textMuted text-xs">Professores</dt><dd>18</dd></div><div><dt class="text-brand-textMuted text-xs">Entrega</dt><dd>Certificado reconhecido pelo MEC — portaria nº 1.058</dd></div><div><dt class="text-brand-textMuted text-xs">Preço</dt><dd>Condição especial pelo Cupom Ouro</dd></div></dl>
+                </div>
+            </div>
+            <button onclick="abrirPopup()" class="bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Quero minha vaga e meu Cupom Ouro</button>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-bg">
+        <div class="site-grid max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-display font-black uppercase mb-4">Seu risco é zero por 7 dias.</h2>
+            <p class="text-white mb-8">Assiste e avalia com calma. Se em até 7 dias achar que não valeu, devolvemos 100% do valor. Sem burocracia.</p>
+            <ul class="space-y-3 text-white">
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Garantia incondicional de 7 dias</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Compra 100% segura</li>
+                <li class="flex gap-3"><span class="w-2 h-2 bg-brand-primary mt-2 shrink-0"></span>Suporte por WhatsApp antes e durante o evento</li>
+            </ul>
+        </div>
+    </section>
+    <section class="py-24 bg-brand-surface">
+        <div class="site-grid max-w-3xl">
+            <h2 class="text-3xl font-display font-black uppercase mb-10">Perguntas frequentes</h2>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">O que é essa certificação?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">São 8 horas de conteúdo com certificado de conclusão e carga horária, emitido pela Personal Trainer Academy. É o começo da sua especialização em bodybuilding: serve para currículo, para mostrar aos seus alunos e para abrir a porta da pós-graduação completa. Não é registro profissional e não substitui a graduação.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Preciso já treinar atleta?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Não. Boa parte dos participantes atende aluno de academia e vem para aplicar o mesmo protocolo em quem quer shape, massa e definição. Quem quer começar a treinar atleta também sai daqui sabendo por onde.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Sou personal de academia. Serve para mim?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Serve. O protocolo que constrói um atleta é o mesmo que constrói o shape do seu aluno — muda o prazo e a intensidade, não o critério.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Serve para quem já atua há anos?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Serve. O conteúdo não é básico — é sobre decidir treino em nível avançado.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Tem conteúdo sobre atleta feminina?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Tem. Parte do domingo é dedicada à preparação de atleta feminina.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Como funciona o Cupom Ouro?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Liberado para quem se inscreve na imersão. Garante condição especial na pós-graduação e não é distribuído fora do evento.</div>
+            </div>
+            <div class="faq-item border-b border-brand-primary/60 py-4">
+                <button type="button" class="faq-q w-full text-left font-display font-black uppercase">Como recebo o acesso?</button>
+                <div class="faq-a text-brand-textSecondary text-sm mt-3">Depois da confirmação do pagamento você recebe e-mail e mensagem no WhatsApp com o link e as orientações.</div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../assets/bg-hero.webp" alt="" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-[#1d1d1b]/70"></div>
+        </div>
+        <div class="site-grid relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-display font-black uppercase leading-tight mb-4">Um domingo pode mudar o nível dos seus treinos.</h2>
+            <p class="text-white max-w-2xl mx-auto mb-6">Você já estuda e já entrega resultado. Falta aprender o que os maiores treinadores do Brasil fazem de diferente — e ter como comprovar isso.</p>
+            <p class="text-brand-textMuted text-sm mb-10">Domingo, 27 de setembro · 8h30 às 18h · 8h de conteúdo ao vivo · certificado de conclusão · Cupom Ouro PTA · vagas limitadas</p>
+            <button onclick="abrirPopup()" class="w-full sm:w-auto bg-brand-primary hover:bg-brand-primaryHover text-white font-display font-black uppercase tracking-[0.1em] py-5 px-10 transition-all duration-300">Garantir minha vaga agora</button>
+        </div>
+    </section>
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-brand-primary text-white flex items-center justify-between p-4 z-[90] shadow-[0_-5px_20px_rgba(200,35,40,0.4)]">
+        <span class="font-display font-black text-xl italic">R$ 19,90</span>
+        <button onclick="abrirPopup()" class="border border-white px-4 py-2 font-display font-bold text-xs uppercase tracking-widest">Garantir vaga</button>
+    </div>
+    <div id="popup-captura" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-xl" aria-hidden="true">
+        <div class="relative bg-brand-surface border border-white/10 max-w-md w-full p-8 md:p-10">
+            <button type="button" onclick="fecharPopup()" class="absolute top-6 right-6 w-10 h-10 bg-white/5 border border-white/10 hover:bg-brand-primary hover:text-white flex items-center justify-center text-gray-400"><i class="fas fa-times"></i></button>
+            <div class="text-center mb-6">
+                <h3 class="font-display font-black text-2xl text-white uppercase tracking-tight mb-2">Garanta sua Vaga</h3>
+                <p class="text-sm text-brand-textMuted">Insira seus dados para prosseguir ao pagamento seguro.</p>
+            </div>
+            <form id="form-bb3" class="space-y-4 mt-6 popup-form">
+                <div>
+                    <label for="lead-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                    <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="w-full px-4 py-3 bg-brand-bg border border-white/10 text-white placeholder-gray-500 focus:border-brand-primary outline-none">
+                </div>
+                <div>
+                    <label for="lead-nome" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
+                    <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome completo" class="w-full px-4 py-3 bg-brand-bg border border-white/10 text-white placeholder-gray-500 focus:border-brand-primary outline-none">
+                </div>
+                <button type="submit" class="w-full bg-brand-primary text-white font-sans font-bold py-4 uppercase tracking-widest hover:shadow-[0_0_20px_rgba(200,35,40,0.6)] transition btn-submit mt-2">Avançar para Pagamento</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+        const popup = document.getElementById('popup-captura');
+        function abrirPopup() { popup.classList.remove('hidden'); popup.classList.add('flex'); document.body.style.overflow='hidden'; }
+        function fecharPopup() { popup.classList.add('hidden'); popup.classList.remove('flex'); document.body.style.overflow=''; }
+        popup.addEventListener('click', e => { if (e.target === popup) fecharPopup(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharPopup(); });
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
+        });
+        function obterUTMs() {
+            const p = new URLSearchParams(location.search);
+            return { utm_source:p.get('utm_source')||'', utm_medium:p.get('utm_medium')||'', utm_campaign:p.get('utm_campaign')||'', utm_term:p.get('utm_term')||'', utm_content:p.get('utm_content')||'' };
+        }
+        document.getElementById('form-bb3').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn-submit');
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processando...';
+            const nome = document.getElementById('lead-nome').value.trim();
+            const email = document.getElementById('lead-email').value.trim();
+            const utms = obterUTMs();
+            const payload = { nome, email, telefone: '', ...utms, url: location.href };
+            try {
+                await fetch('https://hook.us1.make.com/bj1q14346ezeybpcqjb9ctea89aoatvn?produto="Certificacao_Bodybuilding"', {
+                    method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+                });
+            } catch (err) {}
+            const q = `?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&utm_source=${encodeURIComponent(utms.utm_source)}&utm_term=${encodeURIComponent(utms.utm_term)}&utm_campaign=${encodeURIComponent(utms.utm_campaign)}&utm_medium=${encodeURIComponent(utms.utm_medium)}&utm_content=${encodeURIComponent(utms.utm_content)}`;
+            location.href = '#checkout_hotmart' + q;
+        });
+    </script>
+</body>
+</html>
