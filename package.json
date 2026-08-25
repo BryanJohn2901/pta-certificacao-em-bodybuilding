@@ -1,0 +1,13 @@
+{
+  "name": "pta-certificacao-em-bodybuilding",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "tailwindcss": "^3.4.17",
+    "terser": "^5.39.0"
+  }
+}

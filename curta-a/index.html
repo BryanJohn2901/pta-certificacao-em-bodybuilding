@@ -410,6 +410,15 @@
                         <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
                     </div>
                 </div>
+                <div>
+                    <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
+                    <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
+                        <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
+                        <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
+                    </div>
+                    <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
+                    <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
+                </div>
                 <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
             </form>
         </div>
@@ -444,6 +453,14 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => { navbar.classList.toggle('show', window.scrollY > 420); }, { passive: true });
 
+        const soDigitos = v => (v || '').replace(/\D/g, '');
+        const telInput = document.getElementById('lead-telefone');
+        telInput?.addEventListener('input', function() {
+            const d = soDigitos(this.value).slice(0, 11);
+            this.value = d.length <= 2 ? (d ? '(' + d : '') : d.length <= 7 ? '(' + d.slice(0,2) + ') ' + d.slice(2) : '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
+            document.getElementById('erro-telefone')?.classList.add('hidden');
+        });
+
         function obterUTMs() {
             const p = new URLSearchParams(location.search);
             return { utm_source:p.get('utm_source')||'', utm_medium:p.get('utm_medium')||'', utm_campaign:p.get('utm_campaign')||'', utm_term:p.get('utm_term')||'', utm_content:p.get('utm_content')||'' };
@@ -454,13 +471,18 @@
 
             const nome = document.getElementById('lead-nome').value.trim();
             const email = document.getElementById('lead-email').value.trim();
+            const telDigitos = soDigitos(document.getElementById('lead-telefone').value);
+            const erroTelefone = document.getElementById('erro-telefone');
+            if (telDigitos.length < 10) { erroTelefone?.classList.remove('hidden'); return; }
+            erroTelefone?.classList.add('hidden');
 
             const btn = this.querySelector('.btn-submit');
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processando...';
 
+            const telefone = '+55' + telDigitos;
             const utms = obterUTMs();
-            const payload = { nome, email, ...utms, url: location.href };
+            const payload = { nome, email, telefone, ...utms, url: location.href };
 
             try {
                 await fetch('https://hook.us1.make.com/bj1q14346ezeybpcqjb9ctea89aoatvn?produto="Certificacao_Bodybuilding"', {
@@ -468,7 +490,7 @@
                 });
             } catch (err) {}
 
-            const q = `?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&utm_source=${encodeURIComponent(utms.utm_source)}&utm_term=${encodeURIComponent(utms.utm_term)}&utm_campaign=${encodeURIComponent(utms.utm_campaign)}&utm_medium=${encodeURIComponent(utms.utm_medium)}&utm_content=${encodeURIComponent(utms.utm_content)}`;
+            const q = `?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(telefone)}&utm_source=${encodeURIComponent(utms.utm_source)}&utm_term=${encodeURIComponent(utms.utm_term)}&utm_campaign=${encodeURIComponent(utms.utm_campaign)}&utm_medium=${encodeURIComponent(utms.utm_medium)}&utm_content=${encodeURIComponent(utms.utm_content)}`;
             location.href = '#checkout_hotmart' + q;
         });
     </script>
