@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="image" href="../assets/bg-hero.webp">
+    <link rel="preload" as="image" href="../assets/logo-certificacao.svg">
     <title>Certificação em Bodybuilding · Longa C</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,800;0,900;1,800;1,900&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,800;0,900;1,800;1,900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -28,13 +29,12 @@
                         muted2: '#8b8b93',
                         red: '#c82328',
                         reddeep: '#8f181c',
-                        ember: '#ff6a3d',
-                        gold: '#d4af37'
+                        ember: '#c82328'
                     },
                     fontFamily: {
                         body: ['Inter', 'sans-serif'],
                         display: ['Archivo', 'sans-serif'],
-                        mono: ['IBM Plex Mono', 'monospace'],
+                        mono: ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -95,7 +95,7 @@
         @media (min-width: 768px) { .profgrid { grid-template-columns:repeat(2, 1fr); } }
         @media (min-width: 1024px) { .profgrid { grid-template-columns:repeat(3, 1fr); } }
         .profcard { border:1px solid #2c2c28; background:#262623; display: flex; flex-direction: column; }
-        .profcard .ph { aspect-ratio:4/5; background: repeating-linear-gradient(135deg,#2f2f2b 0 8px,#292926 8px 16px); display:flex; align-items:center; justify-content:center; color:#8b8b93; font-size:.74rem; font-family:'IBM Plex Mono'; position: relative; overflow: hidden; }
+        .profcard .ph { aspect-ratio:4/5; background: repeating-linear-gradient(135deg,#2f2f2b 0 8px,#292926 8px 16px); display:flex; align-items:center; justify-content:center; color:#8b8b93; font-size:.74rem; font-family:'Inter'; position: relative; overflow: hidden; }
         .profcard .ph img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(100%) contrast(1.1); transition: transform .5s ease, filter .5s ease; }
         .profcard:hover .ph img { transform: scale(1.08); filter: grayscale(0%) contrast(1.05); }
         .profcard .ph::after { content:""; position:absolute; inset:0; background: linear-gradient(to top, rgba(29,29,27,.85), transparent 55%); }
@@ -125,14 +125,14 @@
         .faq-item { border-bottom: 1px solid #3a3a35; transition: background .25s ease; }
         .faq-item:hover { background: rgba(200,35,40,.05); }
         .faq-q { width: 100%; text-align: left; padding: 1.5rem 1rem; font-family: 'Archivo'; font-weight: 800; font-size: 1.1rem; color: #ffffff; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; transition: color 0.2s; background: none; border: 0; }
-        .faq-q:hover { color: #c82328; }
+        .faq-q:hover { color: #ffffff; }
         .faq-q i { font-size: 0.8rem; color: #c82328; transition: transform 0.3s ease; }
         .faq-item.open .faq-q i { transform: rotate(45deg); }
         .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease; color: #a1a1aa; line-height: 1.6; padding: 0 1rem; }
         .faq-item.open .faq-a { max-height: 500px; opacity: 1; padding-bottom: 1.5rem; }
 
-        .btn-primary { display:inline-block; background:#c82328; color:#ffffff; font-family:'Archivo'; font-weight:900; font-size:1.05rem; letter-spacing:.03em; text-transform:uppercase; padding:1.1rem 1.75rem; border:none; text-align:center; cursor: pointer; transition: background 0.2s; width: 100%; white-space:nowrap; }
-        @media (max-width: 400px) { .btn-primary { font-size:.76rem; padding:.9rem .85rem; letter-spacing:0; } }
+        .btn-primary { display:inline-block; background:#c82328; color:#ffffff; font-family:'Archivo'; font-weight:900; font-size:1.05rem; letter-spacing:.03em; text-transform:uppercase; padding:1.1rem 1.75rem; border:none; text-align:center; cursor: pointer; transition: background 0.2s; width: 100%; white-space:normal; min-height: 52px; }
+        @media (max-width: 400px) { .btn-primary { font-size:.8rem; padding:.85rem .7rem; letter-spacing:0; min-height:52px; } }
         @media (min-width: 640px) { .btn-primary { width: auto; } }
         .btn-primary.full { width: 100%; }
         .btn-primary:hover { background:#8f181c; }
@@ -146,7 +146,7 @@
         .check-list li i { position: absolute; left: 0; top: 0.2rem; color:#c82328; font-size: .95rem; }
         
         .title-mark { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-        .title-mark::before { content: ""; display: block; width: 40px; height: 4px; background: linear-gradient(90deg,#c82328,#ff6a3d); border-radius: 2px; }
+        .title-mark::before { content: ""; display: block; width: 40px; height: 4px; background: #c82328; }
 
         /* ---- Premium effects ---- */
         .blob { position:absolute; border-radius:50%; filter: blur(90px); opacity:.4; pointer-events:none; animation: floatBlob 14s ease-in-out infinite; }
@@ -173,13 +173,13 @@
             border: 2px solid transparent;
             background:
                 linear-gradient(#262623, #262623) padding-box,
-                linear-gradient(115deg, #c82328, #ff6a3d, #d4af37, #8f181c, #c82328, #ff6a3d) border-box;
+                linear-gradient(115deg, #c82328, #8f181c, #c82328) border-box;
             background-size: 100% 100%, 300% 300%;
             animation: gradientShift 6s ease infinite;
         }
         @keyframes gradientShift { 0%,100% { background-position: 0 0, 0% 50%; } 50% { background-position: 0 0, 100% 50%; } }
 
-        .grad-text { background: linear-gradient(90deg,#ff8a6a,#c82328 65%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .grad-text { color:#c82328; }
 
         .scroll-cue { animation: bounceCue 2.2s ease-in-out infinite; }
         @keyframes bounceCue { 0%,100% { transform: translateY(0); opacity:.6; } 50% { transform: translateY(10px); opacity:1; } }
@@ -187,7 +187,7 @@
         .navbar { transform: translateY(-110%); transition: transform .4s ease; }
         .navbar.show { transform: translateY(0); }
 
-        .ribbon { position:absolute; top:1.1rem; right:-2.6rem; background: linear-gradient(90deg,#c82328,#ff6a3d); color:#fff; font-family:'Archivo'; font-weight:900; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; padding:.4rem 3rem; transform: rotate(45deg); box-shadow: 0 6px 16px rgba(0,0,0,.4); }
+        .ribbon { display:none; }
 
         .row-hover { transition: background .25s ease, padding-left .25s ease; }
         .row-hover:hover { background: rgba(200,35,40,.08); padding-left: .5rem; }
@@ -221,7 +221,7 @@
         <div class="blob w-[420px] h-[420px] bg-red/40 -top-20 -left-20"></div>
         <div class="blob w-[360px] h-[360px] bg-ember/30 bottom-0 -right-16" style="animation-delay:-6s;"></div>
 
-        <div class="max-w-[1300px] mx-auto px-6 relative z-10 flex flex-col items-center text-center w-full" data-aos="fade-up">
+        <div class="max-w-[1300px] mx-auto px-6 relative z-10 flex flex-col items-center text-center w-full">
 
             <div class="inline-flex items-center gap-3 bg-red px-6 py-2 mb-10 text-paper text-[0.65rem] md:text-xs font-display font-bold uppercase tracking-[0.15em] shadow-lg shadow-red/30">
                 <span class="pulse-dot"></span>
@@ -240,15 +240,7 @@
 
             <button onclick="abrirPopup()" class="btn-primary w-full sm:w-auto shadow-xl shadow-red/20 hover:shadow-red/40"><span class="inline-flex items-center gap-2">Quero garantir minha vaga <i class="fas fa-arrow-right"></i></span></button>
 
-            <div class="mt-8 w-full max-w-3xl">
-                <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-4 px-6 py-5 border border-linesoft bg-ink2/60 backdrop-blur-sm">
-                    <span class="inline-flex items-center gap-2.5 text-paper"><i class="fas fa-calendar-days text-red text-lg"></i><span class="font-display font-bold text-sm md:text-base uppercase tracking-wide">27 de setembro</span></span>
-                    <span class="inline-flex items-center gap-2.5 text-paper"><i class="fas fa-clock text-red text-lg"></i><span class="font-display font-bold text-sm md:text-base uppercase tracking-wide">8h30 às 18h</span></span>
-                    <span class="inline-flex items-center gap-2.5 text-paper"><i class="fas fa-video text-red text-lg"></i><span class="font-display font-bold text-sm md:text-base uppercase tracking-wide">8h ao vivo</span></span>
-                    <span class="inline-flex items-center gap-2.5 text-paper"><i class="fas fa-certificate text-red text-lg"></i><span class="font-display font-bold text-sm md:text-base uppercase tracking-wide">Certificado</span></span>
-                    <span class="inline-flex items-center gap-2.5 text-paper"><i class="fas fa-ticket text-red text-lg"></i><span class="font-display font-bold text-sm md:text-base uppercase tracking-wide">Cupom Ouro PTA</span></span>
-                </div>
-            </div>
+            <p class="mt-8 text-paper text-sm md:text-base font-body leading-relaxed max-w-3xl">Domingo, 27 de setembro · 8h30 às 18h · 8h de conteúdo ao vivo · certificado de conclusão · Cupom Ouro PTA para inscritos</p>
 
             <div class="scroll-cue mt-14 text-muted/70"><i class="fas fa-chevron-down"></i></div>
         </div>
@@ -257,7 +249,7 @@
     <div class="w-full bg-red py-4 relative z-20 border-b border-ink/20 shadow-lg">
         <div class="max-w-[1300px] mx-auto px-6 text-center">
             <p class="text-paper font-display font-bold text-[0.82rem] tracking-[0.1em] uppercase leading-relaxed flex flex-wrap items-center justify-center gap-x-2">
-                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão <span class="opacity-50 mx-1">·</span> <i class="fas fa-star"></i> O começo da sua especialização
+                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão <span class="opacity-50 mx-1">·</span> <i class="fas fa-star"></i> O começo da sua especialização em bodybuilding
             </p>
         </div>
     </div>
@@ -271,13 +263,13 @@
                 
                 <ul class="check-list text-paper text-[1.05rem] font-body mb-8">
                     <li><i class="fas fa-circle-check"></i><b>8 horas de conteúdo</b>, 100% online e ao vivo</li>
-                    <li><i class="fas fa-circle-check"></i><b>Material de apoio digital</b> para consulta posterior</li>
+                    <li><i class="fas fa-circle-check"></i><b>Material de apoio digital</b></li>
                     <li><i class="fas fa-circle-check"></i><b>Certificado de conclusão</b> com carga horária</li>
                     <li><i class="fas fa-circle-check"></i><b>Cupom Ouro</b> para a Pós em Bodybuilding e Estética Corporal</li>
                 </ul>
             </div>
             
-            <div class="border border-linesoft bg-ink2 card-hover" data-aos="fade-left">
+            <div class="border border-linesoft bg-ink2 card-hover">
                 <div class="bg-ink3 px-6 py-4 border-b border-linesoft flex items-center gap-2">
                     <i class="fas fa-clock text-red"></i>
                     <h3 class="font-display font-bold text-paper text-sm tracking-widest uppercase">Grade do Dia</h3>
@@ -307,17 +299,17 @@
                 </div>
 
                 <div class="numcards max-w-3xl mb-12">
-                    <div class="numcard row-hover" data-aos="fade-up" data-aos-delay="0"><div class="icon-circle"><i class="fas fa-flask"></i></div><div class="t"><b>Ciência da hipertrofia</b><span>Por que o músculo cresce e o que decide a resposta de cada aluno</span></div></div>
-                    <div class="numcard row-hover" data-aos="fade-up" data-aos-delay="50"><div class="icon-circle"><i class="fas fa-chart-line"></i></div><div class="t"><b>Periodização</b><span>Da avaliação à estrutura do programa</span></div></div>
-                    <div class="numcard row-hover" data-aos="fade-up" data-aos-delay="100"><div class="icon-circle"><i class="fas fa-medal"></i></div><div class="t"><b>Preparação de palco</b><span>Como se conduz uma preparação do off-season ao palco</span></div></div>
-                    <div class="numcard row-hover" data-aos="fade-up" data-aos-delay="150"><div class="icon-circle"><i class="fas fa-heart-pulse"></i></div><div class="t"><b>Saúde articular</b><span>Como manter o aluno treinando pesado a preparação inteira</span></div></div>
-                    <div class="numcard row-hover" data-aos="fade-up" data-aos-delay="200"><div class="icon-circle"><i class="fas fa-pills"></i></div><div class="t"><b>Farmacologia esportiva</b><span>O que o treinador precisa entender sobre recursos ergogênicos</span></div></div>
+                    <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-flask"></i></div><div class="t"><b>Ciência da hipertrofia</b><span>Por que o músculo cresce e o que decide a resposta de cada aluno</span></div></div>
+                    <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-chart-line"></i></div><div class="t"><b>Periodização</b><span>Da avaliação à estrutura do programa</span></div></div>
+                    <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-medal"></i></div><div class="t"><b>Preparação de palco</b><span>Como se conduz uma preparação do off-season ao palco</span></div></div>
+                    <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-heart-pulse"></i></div><div class="t"><b>Saúde articular</b><span>Como manter o aluno treinando pesado a preparação inteira</span></div></div>
+                    <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-pills"></i></div><div class="t"><b>Farmacologia esportiva</b><span>O que o treinador precisa entender sobre recursos ergogênicos</span></div></div>
                 </div>
 
                 <div class="text-center lg:text-left"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero ver a grade completa <i class="fas fa-arrow-right"></i></span></button></div>
             </div>
 
-            <div class="hidden lg:flex flex-col items-center justify-center" data-aos="zoom-in">
+            <div class="hidden lg:flex flex-col items-center justify-center">
                 <div class="relative w-64 h-64 flex items-center justify-center">
                     <div class="absolute inset-0 rounded-full bg-red/25 blur-[60px]"></div>
                     <div class="spin-border rounded-full w-56 h-56 flex items-center justify-center relative">
@@ -340,7 +332,7 @@
             </div>
             
             <div class="matrix max-w-5xl mx-auto">
-                <div class="mx yes card-hover shadow-lg shadow-red/5" data-aos="fade-right">
+                <div class="mx yes card-hover shadow-lg shadow-red/5">
                     <div class="mh"><i class="fas fa-circle-check mr-2"></i>É para você se</div>
                     <ul>
                         <li><i class="fas fa-circle-check"></i>Treinador que já prepara atleta e quer refinar o protocolo</li>
@@ -351,15 +343,11 @@
                         <li><i class="fas fa-circle-check"></i>Quem quer cobrar mais e precisa de argumento técnico para isso</li>
                     </ul>
                 </div>
-                <div class="mx no card-hover" data-aos="fade-left">
+                <div class="mx no card-hover">
                     <div class="mh"><i class="fas fa-circle-xmark mr-2"></i>Não é para você se</div>
                     <ul>
-                        <li><i class="fas fa-circle-xmark"></i>Procura treino básico de academia</li>
-                        <li><i class="fas fa-circle-xmark"></i>Quer conteúdo introdutório ou genérico sobre saúde geral</li>
+                        <li><i class="fas fa-circle-xmark"></i>Não é para quem procura treino básico de academia. Aqui o assunto é construção estética de alto nível.</li>
                     </ul>
-                    <div class="p-6 pt-0 text-muted font-body text-sm leading-relaxed border-t border-linesoft mt-4">
-                        Aqui o assunto é construção estética de alto nível, fundamentado na ciência aplicada aos palcos.
-                    </div>
                 </div>
             </div>
         </div>
@@ -374,12 +362,12 @@
             </div>
             
             <div class="learn mb-12">
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="0"><div class="icon-circle"><i class="fas fa-layer-group"></i></div><b>Prioridade de grupamento</b><span>Qual músculo puxar primeiro e o que segurar, para o shape crescer com forma</span></div>
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="50"><div class="icon-circle"><i class="fas fa-gauge-high"></i></div><b>Volume e intensidade</b><span>Quantas séries, a que distância da falha e com que frequência</span></div>
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="100"><div class="icon-circle"><i class="fas fa-arrows-up-down"></i></div><b>Bulking e cutting</b><span>Como as fases funcionam na prática, com prazo de palco na cabeça</span></div>
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="150"><div class="icon-circle"><i class="fas fa-venus"></i></div><b>Atleta feminina</b><span>O que muda na preparação e na prioridade para glúteos e pernas</span></div>
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="200"><div class="icon-circle"><i class="fas fa-bone"></i></div><b>Articulação e longevidade</b><span>Como manter o atleta treinando pesado a preparação inteira sem quebrar</span></div>
-                <div class="lc card-hover" data-aos="fade-up" data-aos-delay="250"><div class="icon-circle"><i class="fas fa-sliders"></i></div><b>Ajuste de protocolo</b><span>O que fazer quando o atleta faz tudo certo e a resposta não vem</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-layer-group"></i></div><b>Prioridade de grupamento</b><span>Qual músculo puxar primeiro e o que segurar, para o shape crescer com forma</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-gauge-high"></i></div><b>Volume e intensidade</b><span>Quantas séries, a que distância da falha e com que frequência</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-arrows-up-down"></i></div><b>Bulking e cutting</b><span>Como as fases funcionam na prática, com prazo de palco na cabeça</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-venus"></i></div><b>Atleta feminina</b><span>O que muda na preparação e na prioridade para glúteos e pernas</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-bone"></i></div><b>Articulação e longevidade</b><span>Como manter o atleta treinando pesado a preparação inteira sem quebrar</span></div>
+                <div class="lc card-hover"><div class="icon-circle"><i class="fas fa-sliders"></i></div><b>Ajuste de protocolo</b><span>O que fazer quando o atleta faz tudo certo e a resposta não vem</span></div>
             </div>
             
             <div class="p-5 border-l-4 border-red bg-ink2 max-w-3xl flex gap-3">
@@ -397,7 +385,7 @@
             <h2 class="text-3xl md:text-[2.5rem] font-display font-black uppercase leading-[1.05] mb-6 text-paper max-w-4xl mx-auto text-balance">Aprenda a preparar um atleta do <span class="grad-text">OFF-SEASON</span> ao PRO CARD.</h2>
             <p class="text-muted text-[1.05rem] mb-20 max-w-2xl mx-auto">Ponto fraco, fases encaixadas no calendário e reta final. Um domingo inteiro sobre preparação de atleta.</p>
             
-            <div class="stepper max-w-4xl mx-auto text-left md:text-center mb-20" data-aos="fade-up">
+            <div class="stepper max-w-4xl mx-auto text-left md:text-center mb-20">
                 <div class="step">
                     <div class="rail"><div class="dot"><i class="fas fa-seedling"></i></div><div class="bar"></div></div>
                     <div class="txt"><b>OFF-SEASON</b><span>Onde se constrói o ponto fraco</span></div>
@@ -416,8 +404,7 @@
                 </div>
             </div>
             
-            <div class="max-w-2xl mx-auto text-left bg-ink2 border border-linesoft p-8 mb-10 shadow-2xl card-hover">
-                <h3 class="font-display font-black text-paper text-lg uppercase tracking-wider mb-6 pb-4 border-b border-linesoft"><i class="fas fa-list-check text-red mr-2"></i>Na prática, você verá:</h3>
+            <div class="max-w-2xl mx-auto text-left bg-ink2 border border-linesoft p-8 mb-10 card-hover">
                 <ul class="check-list text-text text-[0.95rem]">
                     <li><i class="fas fa-circle-check"></i>Como identificar o aluno que tem perfil para competir</li>
                     <li><i class="fas fa-circle-check"></i>Correção de ponto fraco dentro do prazo da preparação</li>
@@ -433,12 +420,12 @@
     
     <section class="py-24 bg-ink">
         <div class="max-w-[1300px] mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-[2.2rem] font-display font-black uppercase leading-[1.1] max-w-3xl mx-auto text-paper">Aprenda com os maiores treinadores de atletas de alto nível no Brasil.</h2>
             </div>
             
             <div class="profgrid">
-                <div class="profcard card-hover" data-aos="fade-up" data-aos-delay="0">
+                <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/walter.webp" alt="Walter Krause" loading="lazy" width="900" height="900"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-flask mr-1"></i>Ciência da hipertrofia</span>
@@ -448,17 +435,17 @@
                     </div>
                 </div>
                 
-                <div class="profcard card-hover" data-aos="fade-up" data-aos-delay="50">
+                <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/carlos.webp" alt="Carlos Garon" loading="lazy" width="900" height="900"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-chart-line mr-1"></i>Periodização</span>
                         <span class="nm">Carlos Garon</span>
-                        <span class="cr">Treinador de atleta profissional e palestrante do Congresso Brasileiro de Musculação 2025. Mais de 90 mil seguidores acompanhando o conteúdo técnico dele.</span>
+                        <span class="cr">Treinador de atleta profissional e palestrante do Congresso Brasileiro de Musculação 2025, nas edições do Rio de Janeiro e de Porto Alegre. Mais de 90 mil seguidores acompanhando o conteúdo técnico dele.</span>
                         <div class="sunday"><b>No domingo:</b> da avaliação à estrutura do programa, estratégias de periodização e métodos avançados para membros inferiores com ênfase em glúteos.</div>
                     </div>
                 </div>
                 
-                <div class="profcard card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/ray.webp" alt="Ray Milet" loading="lazy" width="900" height="900"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-medal mr-1"></i>Preparação de palco</span>
@@ -468,7 +455,7 @@
                     </div>
                 </div>
                 
-                <div class="profcard card-hover" data-aos="fade-up" data-aos-delay="150">
+                <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/bruna.webp" alt="Bruna Massaroto" loading="lazy" width="900" height="900"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-heart-pulse mr-1"></i>Saúde articular</span>
@@ -478,12 +465,12 @@
                     </div>
                 </div>
                 
-                <div class="profcard card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/adam.webp" alt="Adam Abbas" loading="lazy" width="900" height="900"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-pills mr-1"></i>Farmacologia esportiva</span>
                         <span class="nm">Adam Abbas</span>
-                        <span class="cr">Bioquímico e farmacêutico clínico. Pós pelo Instituto Albert Einstein e especialização em Farmacologia pela Harvard Medical School.</span>
+                        <span class="cr">Bioquímico e farmacêutico clínico. Pós-graduado em Farmácia Clínica pelo Instituto Albert Einstein e especialista em Farmacologia pela Harvard Medical School.</span>
                         <div class="sunday"><b>No domingo:</b> o que o treinador precisa entender sobre recursos ergogênicos.</div>
                     </div>
                 </div>
@@ -495,10 +482,9 @@
 
     <section class="py-24 fade-ink2">
         <div class="max-w-[700px] mx-auto px-6">
-            <div class="spin-border shadow-2xl" data-aos="zoom-in">
+            <div class="spin-border shadow-2xl">
             <div class="pricecard">
-                <div class="ribbon">Mais Escolhido</div>
-                <h2 class="text-[1.6rem] md:text-3xl font-display font-black uppercase text-paper mb-6">8 horas de conteúdo avançado por R$ 19,90.</h2>
+                                <h2 class="text-[1.6rem] md:text-3xl font-display font-black uppercase text-paper mb-6">8 horas de conteúdo avançado por R$ 19,90.</h2>
 
                 <ul class="text-left text-text text-[0.95rem] font-body mb-8 space-y-3">
                     <li class="flex gap-3 items-start"><span class="icon-circle w-6 h-6 text-[.65rem] shrink-0"><i class="fas fa-check"></i></span>8 horas de conteúdo ao vivo, num domingo inteiro</li>
@@ -517,11 +503,10 @@
 
                 <button onclick="abrirPopup()" class="btn-primary full py-5"><span class="inline-flex items-center gap-2 justify-center"><i class="fas fa-lock-open"></i> Comprar meu ingresso</span></button>
 
-                <div class="flex items-center justify-center gap-4 mt-6 text-paper opacity-60">
-                    <i class="fab fa-pix text-2xl"></i>
+                <div class="flex items-center justify-center gap-4 mt-6 text-paper opacity-80">
+                    <i class="fab fa-pix text-3xl"></i>
                     <i class="fab fa-cc-visa text-2xl"></i>
                     <i class="fab fa-cc-mastercard text-2xl"></i>
-                    <span class="flex items-center gap-2 text-xs font-mono"><i class="fas fa-lock"></i> Compra Segura</span>
                 </div>
             </div>
             </div>
@@ -537,7 +522,7 @@
                 <p class="text-muted font-display font-bold text-xs uppercase tracking-widest mt-4 border-l-2 border-red pl-3">Só é liberado para quem está inscrito na imersão.</p>
             </div>
             
-            <div class="vs mb-12 shadow-xl card-hover" data-aos="fade-up">
+            <div class="vs mb-12 shadow-xl card-hover">
                 <div class="vs-col">
                     <div class="vs-h"><i class="fas fa-certificate text-red mr-2"></i>Certificação<span class="pill">um domingo</span></div>
                     <dl>
@@ -549,7 +534,7 @@
                     </dl>
                 </div>
                 <div class="vs-col b relative">
-                    <div class="vs-h"><i class="fas fa-graduation-cap text-gold mr-2"></i>Pós-graduação<span class="pill">18 meses</span></div>
+                    <div class="vs-h"><i class="fas fa-graduation-cap text-red mr-2"></i>Pós-graduação<span class="pill">18 meses</span></div>
                     <dl>
                         <dt>Duração</dt><dd>18 meses, 360 horas</dd>
                         <dt>Formato</dt><dd>Pós completa</dd>
@@ -636,10 +621,10 @@
             <p class="text-text text-[1.1rem] max-w-2xl mx-auto mb-10">Você já estuda e já entrega resultado. Falta aprender o que os maiores treinadores do Brasil fazem de diferente — e ter como comprovar isso.</p>
 
             <p class="text-muted font-display font-bold text-xs md:text-sm uppercase tracking-widest mb-10">
-                Domingo, 27 de setembro · 8h30 às 18h · certificado · vagas limitadas
+                Domingo, 27 de setembro · 8h30 às 18h · 8h de conteúdo ao vivo · certificado de conclusão · Cupom Ouro PTA · vagas limitadas
             </p>
 
-            <button onclick="abrirPopup()" class="btn-primary w-full sm:w-auto px-8 py-5 shadow-2xl shadow-red/20"><span class="inline-flex items-center gap-2">Garantir minha vaga <i class="fas fa-arrow-right"></i></span></button>
+            <button onclick="abrirPopup()" class="btn-primary w-full sm:w-auto px-8 py-5 shadow-2xl shadow-red/20"><span class="inline-flex items-center gap-2">Garantir minha vaga agora <i class="fas fa-arrow-right"></i></span></button>
         </div>
     </section>
 
@@ -654,8 +639,7 @@
             <button type="button" onclick="fecharPopup()" class="absolute top-4 right-4 w-10 h-10 bg-transparent text-muted hover:text-red flex items-center justify-center transition-colors"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center mb-6 mt-2">
                 <div class="icon-circle mx-auto mb-4"><i class="fas fa-clipboard-check"></i></div>
-                <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-2">Garanta sua Vaga</h3>
-                <p class="text-sm text-muted">Insira seus dados para prosseguir ao pagamento seguro.</p>
+                <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-2">Quero garantir minha vaga</h3>
             </div>
             <form id="form-bb3" class="space-y-5 mt-6">
                 <div>
@@ -672,25 +656,13 @@
                         <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
                     </div>
                 </div>
-                <div>
-                    <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
-                    <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
-                        <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
-                        <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
-                    </div>
-                    <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
-                    <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
-                </div>
                 <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
             </form>
         </div>
         </div>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, offset: 30, duration: 600 });
-        
         const popup = document.getElementById('popup-captura');
         const popupPanel = popup.querySelector('.modal-panel');
         function abrirPopup() { popup.classList.remove('hidden'); popup.classList.add('flex'); document.body.style.overflow='hidden'; requestAnimationFrame(() => popupPanel.classList.add('show')); }
@@ -698,13 +670,6 @@
         popup.addEventListener('click', e => { if (e.target === popup) fecharPopup(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharPopup(); });
 
-        const soDigitos = v => (v || '').replace(/\D/g, '');
-        const telInput = document.getElementById('lead-telefone');
-        telInput?.addEventListener('input', function() {
-            const d = soDigitos(this.value).slice(0, 11);
-            this.value = d.length <= 2 ? (d ? '(' + d : '') : d.length <= 7 ? '(' + d.slice(0,2) + ') ' + d.slice(2) : '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
-            document.getElementById('erro-telefone')?.classList.add('hidden');
-        });
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => { navbar.classList.toggle('show', window.scrollY > 420); }, { passive: true });
@@ -734,18 +699,13 @@
 
             const nome = document.getElementById('lead-nome').value.trim();
             const email = document.getElementById('lead-email').value.trim();
-            const telDigitos = soDigitos(document.getElementById('lead-telefone').value);
-            const erroTelefone = document.getElementById('erro-telefone');
-            if (telDigitos.length < 10) { erroTelefone?.classList.remove('hidden'); return; }
-            erroTelefone?.classList.add('hidden');
 
             const btn = this.querySelector('.btn-submit');
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processando...';
 
-            const telefone = '+55' + telDigitos;
             const utms = obterUTMs();
-            const payload = { nome, email, telefone, ...utms, url: location.href };
+            const payload = { nome, email, ...utms, url: location.href };
             
             try {
                 await fetch('https://hook.us1.make.com/bj1q14346ezeybpcqjb9ctea89aoatvn?produto="Certificacao_Bodybuilding"', {
