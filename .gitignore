@@ -5,3 +5,4 @@ node_modules/
 
 # Originais pesados — a página usa os WebP
 assets/*.jpg
+assets/professores/*.png
