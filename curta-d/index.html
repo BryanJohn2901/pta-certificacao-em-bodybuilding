@@ -150,6 +150,26 @@
         .modal-panel.show { transform: scale(1); opacity: 1; }
 
 
+
+        .numcards { display:flex; flex-direction:column; gap:.55rem; }
+        .numcard { display:flex; gap:1.1rem; align-items:center; border-bottom:1px solid #3a3a35; padding:.7rem .5rem; }
+        .numcard:last-child { border-bottom:none; }
+        .numcard .t b { display:block; color:#ffffff; font-family:'Archivo'; font-size:1.1rem; margin-bottom: 0.1rem; }
+        .numcard .t span { color:#a1a1aa; font-size:.95rem; }
+        .row-hover { transition: background .25s ease; }
+        .row-hover:hover { background: rgba(200,35,40,.08); }
+        .vs { display:grid; grid-template-columns:1fr; border:1px solid #2c2c28; background:#1d1d1b; }
+        @media (min-width: 768px) { .vs { grid-template-columns:1fr 1fr; } }
+        .vs-col { padding:2rem; }
+        .vs-col + .vs-col { border-top:1px solid #2c2c28; }
+        @media (min-width: 768px) { .vs-col + .vs-col { border-top:none; border-left:1px solid #2c2c28; } }
+        .vs-col.b { background:#2f2f2b; }
+        .vs-h { font-family:'Archivo'; font-weight:900; color:#ffffff; font-size:1.2rem; margin-bottom:1.5rem; display: flex; align-items: center; text-transform: uppercase; }
+        .vs-h .pill { display:inline-block; background:#c82328; color:#ffffff; font-size:.65rem; font-weight: 800; letter-spacing:.12em; padding:.25rem .6rem; margin-left:.75rem; text-transform:uppercase; }
+        .vs dl { margin:0; display:grid; grid-template-columns:auto 1fr; gap:.75rem 1.25rem; font-size:.95rem; }
+        .vs dt { color:#a1a1aa; font-weight: 600; font-family: 'Inter'; font-size: .85rem; }
+        .vs dd { margin:0; color:#ffffff; }
+
         .faq-item { border-bottom: 1px solid #3a3a35; }
         .faq-q { width: 100%; text-align: left; padding: 1.5rem 1rem; font-family: 'Archivo'; font-weight: 800; font-size: 1.1rem; color: #ffffff; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; background: none; border: 0; }
         .faq-q i { font-size: 0.8rem; color: #c82328; }
@@ -179,10 +199,18 @@
 
         <div class="max-w-[1300px] mx-auto px-6 relative z-10 flex flex-col items-center text-center w-full">
 
+            <div class="mb-8 inline-flex items-center gap-3 border border-paper/20 bg-ink/60 px-5 py-2">
+                <span class="text-muted text-sm font-body line-through">De R$ 97</span>
+                <span class="font-display font-black italic text-2xl md:text-3xl text-paper">R$ 19,90</span>
+            </div>
+
             <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding e Estética Corporal" class="w-full max-w-[540px] h-auto mb-10 drop-shadow-[0_10px_40px_rgba(200,35,40,0.25)]">
 
-            <h1 class="text-3xl md:text-5xl lg:text-[3.4rem] font-display font-black uppercase text-paper max-w-4xl leading-[1.05] tracking-tight mb-6" style="text-wrap: balance;">
-                Aprenda a preparar um atleta do <span class="grad-text">OFF-SEASON</span> ao PRO CARD.
+            <h1 class="text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.15rem] font-display font-black uppercase text-paper max-w-4xl leading-[1.12] tracking-tight mb-6">
+                <span class="block">Aprenda a preparar</span>
+                <span class="block">um atleta do</span>
+                <span class="block"><span class="grad-text">OFF-SEASON</span> ao</span>
+                <span class="block">PRO CARD.</span>
             </h1>
 
             <p class="text-[1.05rem] md:text-lg text-text max-w-[68ch] mb-10 font-body leading-relaxed">
@@ -200,7 +228,7 @@
     <div class="w-full bg-red py-4 relative z-20 border-b border-ink/20 shadow-lg">
         <div class="max-w-[1300px] mx-auto px-6 text-center">
             <p class="text-paper font-display font-bold text-[0.82rem] tracking-[0.1em] uppercase leading-relaxed flex flex-wrap items-center justify-center gap-x-2">
-                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão <span class="opacity-50 mx-1">·</span> <i class="fas fa-star"></i> O começo da sua especialização em bodybuilding
+                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão
             </p>
         </div>
     </div>
@@ -242,9 +270,22 @@
     <section class="py-24 fade-ink2">
         <div class="max-w-[1300px] mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight max-w-3xl mx-auto text-paper">Preparar um atleta exige cinco áreas. Você vai ver as cinco em um domingo.</h2>
-                <p class="text-muted mt-3 max-w-2xl mx-auto">Cinco especialidades no mesmo domingo — para aplicar no atleta e no aluno de academia.</p>
+                <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight max-w-3xl mx-auto text-paper">
+                    <span class="block">Preparar um atleta</span>
+                    <span class="block">exige cinco áreas.</span>
+                    <span class="block">Você vai ver as cinco</span>
+                    <span class="block">em um domingo.</span>
+                </h2>
+                <p class="text-muted mt-3 max-w-2xl mx-auto">Aprenda com os maiores treinadores de atletas de alto nível no Brasil.</p>
             </div>
+            <div class="numcards max-w-3xl mx-auto mb-10 text-left">
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-flask"></i></div><div class="t"><b>Ciência da hipertrofia</b><span>Por que o músculo cresce e o que decide a resposta de cada aluno</span></div></div>
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-chart-line"></i></div><div class="t"><b>Periodização</b><span>Da avaliação à estrutura do programa</span></div></div>
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-medal"></i></div><div class="t"><b>Preparação de palco</b><span>Como se conduz uma preparação do off-season ao palco</span></div></div>
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-heart-pulse"></i></div><div class="t"><b>Saúde articular</b><span>Como manter o aluno treinando pesado a preparação inteira</span></div></div>
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-pills"></i></div><div class="t"><b>Farmacologia esportiva</b><span>O que o treinador precisa entender sobre recursos ergogênicos</span></div></div>
+            </div>
+            <div class="text-center mb-16"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero ver a grade completa <i class="fas fa-arrow-right"></i></span></button></div>
             <div class="profgrid">
                 <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/walter.webp" alt="Walter Krause" loading="lazy" width="900" height="900"></div>
@@ -331,6 +372,41 @@
                 </div>
             </div>
             </div>
+        </div>
+    </section>
+
+
+    <section class="py-24 fade-ink2">
+        <div class="max-w-[1300px] mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <div class="title-mark"></div>
+                <h2 class="text-3xl md:text-[2.2rem] font-display font-black uppercase leading-[1.1] mb-6 text-paper text-balance">A certificação é o começo da sua especialização. A pós é a especialização inteira.</h2>
+                <p class="text-text text-[1.05rem] leading-relaxed mb-2">Todo inscrito recebe o Cupom Ouro PTA: condição especial na Pós em Bodybuilding e Estética Corporal — 18 meses, 360 horas, 18 professores, certificado reconhecido pelo MEC pela portaria nº 1.058. Mais de 4.000 já se formaram nela.</p>
+                <p class="text-muted font-display font-bold text-xs uppercase tracking-widest mt-4 border-l-2 border-red pl-3">Só é liberado para quem está inscrito na imersão.</p>
+            </div>
+            <div class="vs mb-12">
+                <div class="vs-col">
+                    <div class="vs-h"><i class="fas fa-certificate text-red mr-2"></i>Certificação<span class="pill">um domingo</span></div>
+                    <dl>
+                        <dt>Duração</dt><dd>8 horas, num domingo</dd>
+                        <dt>Formato</dt><dd>Ao vivo e online</dd>
+                        <dt>Professores</dt><dd>5</dd>
+                        <dt>Entrega</dt><dd>Certificado de conclusão com carga horária</dd>
+                        <dt>Preço</dt><dd class="font-bold text-red">R$ 19,90</dd>
+                    </dl>
+                </div>
+                <div class="vs-col b">
+                    <div class="vs-h"><i class="fas fa-graduation-cap text-red mr-2"></i>Pós-graduação<span class="pill">18 meses</span></div>
+                    <dl>
+                        <dt>Duração</dt><dd>18 meses, 360 horas</dd>
+                        <dt>Formato</dt><dd>Pós completa</dd>
+                        <dt>Professores</dt><dd>18</dd>
+                        <dt>Entrega</dt><dd>Certificado reconhecido pelo MEC — portaria nº 1.058</dd>
+                        <dt>Preço</dt><dd class="text-paper italic font-display font-bold">Condição especial pelo Cupom Ouro</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="text-center"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero minha vaga e meu Cupom Ouro <i class="fas fa-arrow-right"></i></span></button></div>
         </div>
     </section>
 
