@@ -122,6 +122,30 @@
         .vs dt { color:#a1a1aa; font-weight: 600; font-family: 'Inter'; font-size: .85rem; }
         .vs dd { margin:0; color:#ffffff; }
 
+        .vs-wrap { position: relative; margin-bottom: 3.5rem; }
+        .vs-wrap .vs { margin-bottom: 0; padding-bottom: 5.75rem; }
+        .cert-preview {
+            position: relative;
+            z-index: 4;
+            width: min(34rem, 92%);
+            margin: -7.25rem auto 0;
+            background: #f4efe4;
+            color: #1d1d1b;
+            padding: 1.35rem 1.5rem 1.15rem;
+            box-shadow: 0 22px 50px rgba(0,0,0,.55);
+            transform: rotate(2deg);
+            border-top: 6px solid #c82328;
+        }
+        .cert-brand { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: #c82328; margin: 0 0 .55rem; }
+        .cert-title { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: clamp(1.05rem, 3.4vw, 1.45rem); text-transform: uppercase; letter-spacing: .02em; line-height: 1.1; margin: 0 0 .3rem; }
+        .cert-course { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: #c82328; margin: 0 0 .85rem; }
+        .cert-body { font-family: 'Inter', sans-serif; font-size: .82rem; line-height: 1.55; color: #3a3a35; margin: 0 0 1rem; }
+        .cert-foot { display: flex; justify-content: space-between; gap: .75rem; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: #1d1d1b; border-top: 1px solid #d9d2c4; padding-top: .7rem; }
+        @media (max-width: 639px) {
+            .vs-wrap .vs { padding-bottom: 4.75rem; }
+            .cert-preview { transform: rotate(1deg); margin-top: -6.25rem; padding: 1.1rem 1.15rem 1rem; }
+        }
+
         .faq-item { border-bottom: 1px solid #3a3a35; transition: background .25s ease; }
         .faq-item:hover { background: rgba(200,35,40,.05); }
         .faq-q { width: 100%; text-align: left; padding: 1.5rem 1rem; font-family: 'Archivo'; font-weight: 800; font-size: 1.1rem; color: #ffffff; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; transition: color 0.2s; background: none; border: 0; }
@@ -542,7 +566,8 @@
                 <p class="text-muted font-display font-bold text-xs uppercase tracking-widest mt-4 border-l-2 border-red pl-3">Só é liberado para quem está inscrito na imersão.</p>
             </div>
             
-            <div class="vs mb-12 shadow-xl card-hover">
+            <div class="vs-wrap">
+            <div class="vs shadow-xl card-hover">
                 <div class="vs-col">
                     <div class="vs-h"><i class="fas fa-certificate text-red mr-2"></i>Certificação<span class="pill">um domingo</span></div>
                     <dl>
@@ -565,6 +590,14 @@
                 </div>
             </div>
             
+            <div class="cert-preview" aria-hidden="true">
+                <p class="cert-brand">Personal Trainer Academy</p>
+                <p class="cert-title">Certificado de conclusão</p>
+                <p class="cert-course">Bodybuilding e Estética Corporal</p>
+                <p class="cert-body">Certificamos que {nome do aluno} concluiu a Certificação em Bodybuilding e Estética Corporal, com carga horária de 8 horas, realizada em 27 de setembro de 2026.</p>
+                <div class="cert-foot"><span>Carga horária 8h</span><span>27 · 09 · 2026</span></div>
+            </div>
+            </div>
             <div class="text-center"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero minha vaga e meu Cupom Ouro <i class="fas fa-arrow-right"></i></span></button></div>
         </div>
     </section>
