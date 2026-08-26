@@ -186,6 +186,13 @@
 
         .navbar { transform: translateY(-110%); transition: transform .4s ease; }
         .navbar.show { transform: translateY(0); }
+        .navbar-inner { display:flex; align-items:center; justify-content:space-between; gap: 0.85rem; }
+        .navbar-inner img { height: 1.65rem; width: auto; max-width: min(48%, 200px); object-fit: contain; object-position: left center; flex: 1 1 auto; min-width: 0; }
+        .navbar .btn-primary { width: auto; flex: 0 0 auto; padding: 0.55rem 0.75rem; font-size: 0.68rem; letter-spacing: .04em; min-height: 0; white-space: nowrap; }
+        @media (min-width: 640px) {
+            .navbar-inner img { height: 2rem; max-width: 260px; }
+            .navbar .btn-primary { padding: 0.65rem 1.1rem; font-size: 0.8rem; }
+        }
 
         .ribbon { display:none; }
 
@@ -209,9 +216,9 @@
 <body class="selection:bg-red selection:text-paper pb-20 md:pb-0">
 
     <nav id="navbar" class="navbar fixed top-0 left-0 right-0 z-[80] bg-ink/90 backdrop-blur-md border-b border-linesoft">
-        <div class="max-w-[1300px] mx-auto px-6 py-3 flex items-center justify-between">
-            <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding" class="h-8 w-auto">
-            <button onclick="abrirPopup()" class="btn-primary text-xs md:text-sm py-2.5 px-3.5 shadow-lg shadow-red/20 hover:shadow-red/40"><span>Garantir minha vaga</span></button>
+        <div class="navbar-inner max-w-[1300px] mx-auto px-4 sm:px-6 py-3">
+            <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding">
+            <button onclick="abrirPopup()" class="btn-primary"><span>Garantir minha vaga</span></button>
         </div>
     </nav>
 
