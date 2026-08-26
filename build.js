@@ -133,7 +133,8 @@ async function main() {
   }
   copyFile(path.join(ROOT, "assets", "logo-certificacao.svg"), path.join(DIST, "assets", "favicon.svg"));
 
-  execFileSync("python3", ["-c", `
+  try {
+    execFileSync("python3", ["-c", `
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 im = Image.open("${path.join(ROOT, "assets", "bg-hero.webp")}").convert("RGB")
 w, h = im.size
@@ -158,6 +159,16 @@ draw.text((64, 330), "R$ 19,90 · Personal Trainer Academy", font=font_sm, fill=
 im.save("${path.join(DIST, "assets", "og.jpg")}", "JPEG", quality=82, optimize=True)
 print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg")}").stat().st_size)
 `], { stdio: "inherit" });
+  } catch (err) {
+    const fallback = path.join(ROOT, "assets", "og.jpg");
+    const dest = path.join(DIST, "assets", "og.jpg");
+    if (fs.existsSync(fallback)) {
+      copyFile(fallback, dest);
+      console.warn("OG image: PIL indisponível, usando assets/og.jpg.");
+    } else {
+      console.warn("OG image: PIL indisponível e sem fallback.");
+    }
+  }
 
   console.log("→ Tailwind (purged + minify)");
   execFileSync(
