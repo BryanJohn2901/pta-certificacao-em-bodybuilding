@@ -68,7 +68,6 @@ const PAGE_ASSETS = [
   "logo-certificacao.svg",
   "logoPTA.svg",
   "professores/walter.webp",
-  "professores/carlos.webp",
   "professores/ray.webp",
   "professores/bruna.webp",
   "professores/thiago.webp",
@@ -242,7 +241,7 @@ async function main() {
 
     const scripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
       .map((m) => m[1].trim())
-      .filter((code) => code && !code.includes("tailwind.config"));
+      .filter((code) => code && !code.includes("tailwind.config") && !code.includes("pulseq"));
     const jsSource = scripts.join("\n;\n");
     const minJs = await minifyJs(jsSource, {
       compress: { drop_console: false, passes: 2 },
@@ -288,7 +287,9 @@ async function main() {
     html = html.replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>\s*/g, "");
     html = html.replace(/<script>\s*tailwind\.config[\s\S]*?<\/script>\s*/g, "");
     html = html.replace(/<style>[\s\S]*?<\/style>\s*/g, "");
-    html = html.replace(/<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>\s*/g, "");
+    html = html.replace(/<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>\s*/gi, (full) =>
+      /pulseq/i.test(full) ? full : ""
+    );
 
     html = html.replace(/\.\.\/assets\//g, "assets/");
     html = html.replace(/href="(curta|longa)-([a-d])\/index\.html"/g, 'href="$1-$2/"');
@@ -308,6 +309,7 @@ async function main() {
       `<link rel="preconnect" href="https://fonts.googleapis.com">`,
       `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`,
       `<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>`,
+      `<link rel="preconnect" href="https://hub-pta.vercel.app" crossorigin>`,
       page.isHub
         ? `<link rel="stylesheet" href="${bust("css/tailwind.css")}">\n    <link rel="stylesheet" href="${bust("css/hub.css")}">`
         : [
