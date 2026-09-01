@@ -9,8 +9,22 @@ const CleanCSS = require("clean-css");
 const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
 const CANONICAL_ORIGIN = "https://ptadigital.com.br";
-const OG_IMAGE = `${CANONICAL_ORIGIN}/assets/og.jpg`;
 const SITE_NAME = "Personal Trainer Academy";
+const BUILD_ID = String(Date.now());
+
+const HTACCESS = `<IfModule mod_headers.c>
+  Header set Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
+  Header set CDN-Cache-Control "no-store"
+  Header set Cloudflare-CDN-Cache-Control "no-store"
+  Header set Surrogate-Control "no-store"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+</IfModule>
+`;
 
 const HERO = {
   a: {
@@ -47,6 +61,19 @@ const PAGES = [
   { src: "longa-d/index.html", destDir: "longa-d", slug: "longa-d/", css: "longa", js: "longa", hero: "d" },
 ];
 
+const PAGE_ASSETS = [
+  "bg-hero.webp",
+  "hero-desktop.webp",
+  "hero-mobile.webp",
+  "logo-certificacao.svg",
+  "logoPTA.svg",
+  "professores/walter.webp",
+  "professores/carlos.webp",
+  "professores/ray.webp",
+  "professores/bruna.webp",
+  "professores/thiago.webp",
+];
+
 function rmrf(dir) {
   fs.rmSync(dir, { recursive: true, force: true });
 }
@@ -66,15 +93,40 @@ function extractTag(html, tag) {
   return m ? m[1] : "";
 }
 
-function seoBlock({ canonical, title, description, assetPrefix }) {
-  const ogImage = OG_IMAGE;
+function bust(url) {
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}v=${BUILD_ID}`;
+}
+
+function writeNoCache(dir) {
+  const headersSrc = path.join(ROOT, "_headers");
+  if (fs.existsSync(headersSrc)) {
+    copyFile(headersSrc, path.join(dir, "_headers"));
+  }
+  fs.writeFileSync(path.join(dir, ".htaccess"), HTACCESS);
+}
+
+function copyPageAssets(outDir, ogPath) {
+  for (const rel of PAGE_ASSETS) {
+    copyFile(path.join(ROOT, "assets", rel), path.join(outDir, "assets", rel));
+  }
+  copyFile(path.join(ROOT, "assets", "logo-certificacao.svg"), path.join(outDir, "assets", "favicon.svg"));
+  if (ogPath && fs.existsSync(ogPath)) {
+    copyFile(ogPath, path.join(outDir, "assets", "og.jpg"));
+  }
+}
+
+function seoBlock({ canonical, title, description, ogImage }) {
   return [
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeAttr(description)}">`,
     `<meta name="robots" content="index,follow">`,
     `<meta name="theme-color" content="#1d1d1b">`,
+    `<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">`,
+    `<meta http-equiv="Pragma" content="no-cache">`,
+    `<meta http-equiv="Expires" content="0">`,
     `<link rel="canonical" href="${canonical}">`,
-    `<link rel="icon" type="image/svg+xml" href="${assetPrefix}assets/favicon.svg">`,
+    `<link rel="icon" type="image/svg+xml" href="${bust("assets/favicon.svg")}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:locale" content="pt_BR">`,
     `<meta property="og:site_name" content="${SITE_NAME}">`,
@@ -112,29 +164,8 @@ function pageDescription(page) {
   return HERO[page.hero].description;
 }
 
-async function main() {
-  rmrf(DIST);
-  mkdirp(path.join(DIST, "css"));
-  mkdirp(path.join(DIST, "js"));
-  mkdirp(path.join(DIST, "assets", "professores"));
-
-  const assetFiles = [
-    "bg-hero.webp",
-    "hero-desktop.webp",
-    "hero-mobile.webp",
-    "logo-certificacao.svg",
-    "logoPTA.svg",
-    "professores/walter.webp",
-    "professores/carlos.webp",
-    "professores/ray.webp",
-    "professores/bruna.webp",
-    "professores/thiago.webp",
-  ];
-  for (const rel of assetFiles) {
-    copyFile(path.join(ROOT, "assets", rel), path.join(DIST, "assets", rel));
-  }
-  copyFile(path.join(ROOT, "assets", "logo-certificacao.svg"), path.join(DIST, "assets", "favicon.svg"));
-
+function generateOg(dest) {
+  mkdirp(path.dirname(dest));
   try {
     execFileSync("python3", ["-c", `
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance
@@ -158,12 +189,11 @@ draw.rectangle((0, 0, 8, 630), fill="#c82328")
 draw.text((64, 210), "CERTIFICACAO EM BODYBUILDING", font=font_lg, fill="#ffffff")
 draw.text((64, 280), "27 de setembro · 8h de conteudo + certificado", font=font_sm, fill="#e9e7e3")
 draw.text((64, 330), "R$ 19,90 · Personal Trainer Academy", font=font_sm, fill="#c82328")
-im.save("${path.join(DIST, "assets", "og.jpg")}", "JPEG", quality=82, optimize=True)
-print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg")}").stat().st_size)
+im.save("${dest}", "JPEG", quality=82, optimize=True)
+print("og.jpg", __import__("pathlib").Path("${dest}").stat().st_size)
 `], { stdio: "inherit" });
   } catch (err) {
     const fallback = path.join(ROOT, "assets", "og.jpg");
-    const dest = path.join(DIST, "assets", "og.jpg");
     if (fs.existsSync(fallback)) {
       copyFile(fallback, dest);
       console.warn("OG image: PIL indisponível, usando assets/og.jpg.");
@@ -171,6 +201,18 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
       console.warn("OG image: PIL indisponível e sem fallback.");
     }
   }
+}
+
+async function main() {
+  rmrf(DIST);
+  mkdirp(DIST);
+
+  const staging = path.join(DIST, ".staging");
+  mkdirp(path.join(staging, "css"));
+  mkdirp(path.join(staging, "js"));
+  mkdirp(path.join(staging, "assets"));
+
+  generateOg(path.join(staging, "assets", "og.jpg"));
 
   console.log("→ Tailwind (purged + minify)");
   execFileSync(
@@ -179,7 +221,7 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
       "-i",
       path.join(ROOT, "tailwind.input.css"),
       "-o",
-      path.join(DIST, "css", "tailwind.css"),
+      path.join(staging, "css", "tailwind.css"),
       "--minify",
     ],
     { cwd: ROOT, stdio: "inherit" }
@@ -193,9 +235,10 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
     const sample = kind === "curta" ? "curta-a/index.html" : "longa-a/index.html";
     const html = fs.readFileSync(path.join(ROOT, sample), "utf8");
     let css = extractTag(html, "style");
-    css = css.replace(/url\('\.\.\/assets\//g, "url('../assets/");
+    css = css.replace(/url\(['"]?\.\.\/assets\//g, "url('../assets/");
+    css = css.replace(/url\('\.\.\/assets\/([^')]+)'\)/g, (_, file) => `url('${bust("../assets/" + file)}')`);
     extractedCss[kind] = cssMin.minify(css).styles;
-    fs.writeFileSync(path.join(DIST, "css", `${kind}.css`), extractedCss[kind]);
+    fs.writeFileSync(path.join(staging, "css", `${kind}.css`), extractedCss[kind]);
 
     const scripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
       .map((m) => m[1].trim())
@@ -208,20 +251,36 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
     });
     if (minJs.error) throw minJs.error;
     extractedJs[kind] = minJs.code;
-    fs.writeFileSync(path.join(DIST, "js", `${kind}.js`), extractedJs[kind]);
+    fs.writeFileSync(path.join(staging, "js", `${kind}.js`), extractedJs[kind]);
   }
 
-  const hubHtml = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
   const hubCss = cssMin.minify(`body{background:#1d1d1b;color:#fff;font-family:Inter,sans-serif}`).styles;
-  fs.writeFileSync(path.join(DIST, "css", "hub.css"), hubCss);
+  fs.writeFileSync(path.join(staging, "css", "hub.css"), hubCss);
 
-  console.log("→ HTML");
+  const ogPath = path.join(staging, "assets", "og.jpg");
+
+  console.log("→ HTML (pacote completo por pasta)");
   for (const page of PAGES) {
+    const outDir = page.destDir ? path.join(DIST, page.destDir) : DIST;
+    mkdirp(outDir);
+
+    copyFile(path.join(staging, "css", "tailwind.css"), path.join(outDir, "css", "tailwind.css"));
+    if (page.isHub) {
+      copyFile(path.join(staging, "css", "hub.css"), path.join(outDir, "css", "hub.css"));
+      copyFile(path.join(ROOT, "assets", "logo-certificacao.svg"), path.join(outDir, "assets", "favicon.svg"));
+    } else {
+      copyFile(path.join(staging, "css", `${page.css}.css`), path.join(outDir, "css", `${page.css}.css`));
+      copyFile(path.join(staging, "js", `${page.js}.js`), path.join(outDir, "js", `${page.js}.js`));
+      copyPageAssets(outDir, ogPath);
+    }
+
+    writeNoCache(outDir);
+
     let html = fs.readFileSync(path.join(ROOT, page.src), "utf8");
     const canonical = `${CANONICAL_ORIGIN}/${page.slug}`;
-    const assetPrefix = page.isHub ? "" : "../";
-    const cssPrefix = page.isHub ? "css/" : "../css/";
-    const jsPrefix = page.isHub ? "js/" : "../js/";
+    const ogImage = page.isHub
+      ? `${CANONICAL_ORIGIN}/assets/og.jpg`
+      : `${canonical}assets/og.jpg`;
 
     html = html.replace(/<link rel="preconnect"[^>]*>\s*/g, "");
     html = html.replace(/<link rel="preload" as="image"[^>]*>\s*/g, "");
@@ -231,31 +290,32 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
     html = html.replace(/<style>[\s\S]*?<\/style>\s*/g, "");
     html = html.replace(/<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>\s*/g, "");
 
-    html = html.replace(/\.\.\/assets\//g, `${assetPrefix}assets/`);
+    html = html.replace(/\.\.\/assets\//g, "assets/");
     html = html.replace(/href="(curta|longa)-([a-d])\/index\.html"/g, 'href="$1-$2/"');
     html = html.replace(
       /(<img class="hero-photo-mobile"[^>]*alt=")("[^>]*>)/g,
       "$1Certificação em Bodybuilding e Estética Corporal$2"
     );
+    html = html.replace(/(src|href)="(assets\/[^"?]+)(\?[^"]*)?"/g, (_, attr, file) => `${attr}="${bust(file)}"`);
 
     const headInject = [
       seoBlock({
         canonical,
         title: pageTitle(page),
         description: pageDescription(page),
-        assetPrefix,
+        ogImage,
       }),
       `<link rel="preconnect" href="https://fonts.googleapis.com">`,
       `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`,
       `<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>`,
       page.isHub
-        ? `<link rel="stylesheet" href="${cssPrefix}tailwind.css">\n    <link rel="stylesheet" href="${cssPrefix}hub.css">`
+        ? `<link rel="stylesheet" href="${bust("css/tailwind.css")}">\n    <link rel="stylesheet" href="${bust("css/hub.css")}">`
         : [
-            `<link rel="preload" as="image" href="${assetPrefix}assets/hero-mobile.webp" media="(max-width: 767px)">`,
-            `<link rel="preload" as="image" href="${assetPrefix}assets/hero-desktop.webp" media="(min-width: 768px)">`,
-            `<link rel="preload" as="image" href="${assetPrefix}assets/logo-certificacao.svg">`,
-            `<link rel="stylesheet" href="${cssPrefix}tailwind.css">`,
-            `<link rel="stylesheet" href="${cssPrefix}${page.css}.css">`,
+            `<link rel="preload" as="image" href="${bust("assets/hero-mobile.webp")}" media="(max-width: 767px)">`,
+            `<link rel="preload" as="image" href="${bust("assets/hero-desktop.webp")}" media="(min-width: 768px)">`,
+            `<link rel="preload" as="image" href="${bust("assets/logo-certificacao.svg")}">`,
+            `<link rel="stylesheet" href="${bust("css/tailwind.css")}">`,
+            `<link rel="stylesheet" href="${bust("css/" + page.css + ".css")}">`,
           ].join("\n    "),
     ].join("\n    ");
 
@@ -267,7 +327,7 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
     if (page.js) {
       html = html.replace(
         "</body>",
-        `    <script src="${jsPrefix}${page.js}.js"></script>\n</body>`
+        `    <script src="${bust("js/" + page.js + ".js")}"></script>\n</body>`
       );
     }
 
@@ -282,17 +342,16 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
       sortClassName: false,
     });
 
-    const outDir = page.destDir ? path.join(DIST, page.destDir) : DIST;
-    mkdirp(outDir);
     fs.writeFileSync(path.join(outDir, "index.html"), min);
   }
 
-  const headersSrc = path.join(ROOT, "_headers");
-  if (fs.existsSync(headersSrc)) {
-    copyFile(headersSrc, path.join(DIST, "_headers"));
+  writeNoCache(DIST);
+  if (fs.existsSync(ogPath)) {
+    copyFile(ogPath, path.join(DIST, "assets", "og.jpg"));
   }
 
-  console.log("pronto:", DIST);
+  rmrf(staging);
+  console.log("pronto:", DIST, "v=" + BUILD_ID);
 }
 
 main().catch((err) => {

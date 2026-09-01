@@ -796,8 +796,21 @@
 
         function obterUTMs() {
             const p = new URLSearchParams(location.search);
-            return { utm_source:p.get('utm_source')||'', utm_medium:p.get('utm_medium')||'', utm_campaign:p.get('utm_campaign')||'', utm_term:p.get('utm_term')||'', utm_content:p.get('utm_content')||'' };
+            const keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','a'];
+            const fromUrl = {};
+            keys.forEach(k => { const v = (p.get(k) || '').trim(); if (v) fromUrl[k] = v; });
+            if (Object.keys(fromUrl).length) {
+                try { sessionStorage.setItem('bb3_utms', JSON.stringify(fromUrl)); } catch (err) {}
+                return { utm_source: fromUrl.utm_source||'', utm_medium: fromUrl.utm_medium||'', utm_campaign: fromUrl.utm_campaign||'', utm_term: fromUrl.utm_term||'', utm_content: fromUrl.utm_content||'', a: fromUrl.a||'' };
+            }
+            try {
+                const saved = JSON.parse(sessionStorage.getItem('bb3_utms') || '{}');
+                return { utm_source: saved.utm_source||'', utm_medium: saved.utm_medium||'', utm_campaign: saved.utm_campaign||'', utm_term: saved.utm_term||'', utm_content: saved.utm_content||'', a: saved.a||'' };
+            } catch (err) {
+                return { utm_source:'', utm_medium:'', utm_campaign:'', utm_term:'', utm_content:'', a:'' };
+            }
         }
+        obterUTMs();
         
         document.getElementById('form-bb3').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -818,13 +831,23 @@
             const payload = { nome, email, telefone, ...utms, url: location.href };
             
             try {
-                await fetch('https://hook.us1.make.com/bj1q14346ezeybpcqjb9ctea89aoatvn?produto="Certificacao_Bodybuilding"', {
+                await fetch('https://hook.us1.make.com/bj1q14346ezeybpcqjb9ctea89aoatvn?produto=c-bb6', {
                     method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
                 });
             } catch (err) {}
-            
-            const q = `?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(telefone)}&utm_source=${encodeURIComponent(utms.utm_source)}&utm_term=${encodeURIComponent(utms.utm_term)}&utm_campaign=${encodeURIComponent(utms.utm_campaign)}&utm_medium=${encodeURIComponent(utms.utm_medium)}&utm_content=${encodeURIComponent(utms.utm_content)}`;
-            location.href = '#checkout_hotmart' + q;
+
+            const checkout = new URL('https://sun.eduzz.com/E0DK6DE691');
+            checkout.searchParams.set('nome', nome);
+            checkout.searchParams.set('name', nome);
+            checkout.searchParams.set('email', email);
+            checkout.searchParams.set('cel', telDigitos);
+            checkout.searchParams.set('phone', telDigitos);
+            checkout.searchParams.set('telefone', telefone);
+            checkout.searchParams.set('url', location.href);
+            ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','a'].forEach(k => {
+                if (utms[k]) checkout.searchParams.set(k, utms[k]);
+            });
+            location.href = checkout.toString();
         });
     </script>
 </body>
