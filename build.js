@@ -8,7 +8,7 @@ const CleanCSS = require("clean-css");
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
-const CANONICAL_ORIGIN = "http://ptadigital.com.br";
+const CANONICAL_ORIGIN = "https://ptadigital.com.br";
 const OG_IMAGE = `${CANONICAL_ORIGIN}/assets/og.jpg`;
 const SITE_NAME = "Personal Trainer Academy";
 
@@ -120,13 +120,15 @@ async function main() {
 
   const assetFiles = [
     "bg-hero.webp",
+    "hero-desktop.webp",
+    "hero-mobile.webp",
     "logo-certificacao.svg",
     "logoPTA.svg",
     "professores/walter.webp",
     "professores/carlos.webp",
     "professores/ray.webp",
     "professores/bruna.webp",
-    "professores/adam.webp",
+    "professores/thiago.webp",
   ];
   for (const rel of assetFiles) {
     copyFile(path.join(ROOT, "assets", rel), path.join(DIST, "assets", rel));
@@ -231,6 +233,10 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
 
     html = html.replace(/\.\.\/assets\//g, `${assetPrefix}assets/`);
     html = html.replace(/href="(curta|longa)-([a-d])\/index\.html"/g, 'href="$1-$2/"');
+    html = html.replace(
+      /(<img class="hero-photo-mobile"[^>]*alt=")("[^>]*>)/g,
+      "$1Certificação em Bodybuilding e Estética Corporal$2"
+    );
 
     const headInject = [
       seoBlock({
@@ -245,7 +251,8 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
       page.isHub
         ? `<link rel="stylesheet" href="${cssPrefix}tailwind.css">\n    <link rel="stylesheet" href="${cssPrefix}hub.css">`
         : [
-            `<link rel="preload" as="image" href="${assetPrefix}assets/bg-hero.webp">`,
+            `<link rel="preload" as="image" href="${assetPrefix}assets/hero-mobile.webp" media="(max-width: 767px)">`,
+            `<link rel="preload" as="image" href="${assetPrefix}assets/hero-desktop.webp" media="(min-width: 768px)">`,
             `<link rel="preload" as="image" href="${assetPrefix}assets/logo-certificacao.svg">`,
             `<link rel="stylesheet" href="${cssPrefix}tailwind.css">`,
             `<link rel="stylesheet" href="${cssPrefix}${page.css}.css">`,
@@ -278,6 +285,11 @@ print("og.jpg", __import__("pathlib").Path("${path.join(DIST, "assets", "og.jpg"
     const outDir = page.destDir ? path.join(DIST, page.destDir) : DIST;
     mkdirp(outDir);
     fs.writeFileSync(path.join(outDir, "index.html"), min);
+  }
+
+  const headersSrc = path.join(ROOT, "_headers");
+  if (fs.existsSync(headersSrc)) {
+    copyFile(headersSrc, path.join(DIST, "_headers"));
   }
 
   console.log("pronto:", DIST);

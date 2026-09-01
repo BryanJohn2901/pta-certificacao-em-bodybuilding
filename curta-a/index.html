@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" as="image" href="../assets/bg-hero.webp">
+    <link rel="preload" as="image" href="../assets/hero-mobile.webp" media="(max-width: 767px)">
+    <link rel="preload" as="image" href="../assets/hero-desktop.webp" media="(min-width: 768px)">
     <link rel="preload" as="image" href="../assets/logo-certificacao.svg">
     <title>Certificação em Bodybuilding · Curta A</title>
 
@@ -51,6 +52,42 @@
         button { border-radius: 0; }
 
         .bg-hero-texture { background-image: url('../assets/bg-hero.webp'); background-size: cover; background-position: center; }
+        .hero-head { position: relative; display: flex; flex-direction: column; background: #1d1d1b; overflow: hidden; padding-bottom: 2.25rem; }
+        .hero-photo-wrap { position: relative; display: block; width: 100%; }
+        .hero-photo-mobile { display: block; width: 100%; height: auto; }
+        .hero-photo-wrap::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 48%;
+            background: linear-gradient(to bottom, rgba(29,29,27,0) 0%, rgba(29,29,27,.55) 45%, #1d1d1b 100%);
+            pointer-events: none;
+        }
+        .hero-shade { display: none; }
+        .hero-copy { position: relative; z-index: 10; width: 100%; max-width: 1300px; margin: -3.25rem auto 0; padding: 0 1.5rem 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .hero-logo { width: 210px; height: auto; margin-bottom: 1.25rem; display: block; }
+        .hero-h1 { max-width: 100%; font-size: clamp(1.05rem, 4.1vw, 2.7rem); letter-spacing: -0.03em; }
+        .hero-h1 .hero-line { display: block; white-space: nowrap; }
+        @media (min-width: 768px) {
+            .hero-head {
+                min-height: 90vh;
+                justify-content: center;
+                padding: 3.5rem 0 4rem;
+                background-image: url('../assets/hero-desktop.webp');
+                background-size: cover;
+                background-position: right center;
+                background-repeat: no-repeat;
+            }
+            .hero-photo-wrap { display: none; }
+            .hero-shade {
+                display: block;
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, rgba(29,29,27,.88) 0%, rgba(29,29,27,.62) 38%, rgba(29,29,27,.22) 68%, rgba(29,29,27,.08) 100%);
+            }
+            .hero-copy { align-items: flex-start; text-align: left; margin-top: 0; padding: 0 1.5rem; }
+            .hero-logo { width: 300px; margin-bottom: 1.75rem; }
+        }
 
         .profgrid { display:grid; grid-template-columns:1fr; gap:1.25rem; }
         @media (min-width: 768px) { .profgrid { grid-template-columns:repeat(2, 1fr); gap:1.5rem; } }
@@ -221,26 +258,24 @@
         </div>
     </nav>
 
-    <header class="relative min-h-[95vh] flex flex-col justify-center pt-12 pb-16 overflow-hidden bg-hero-texture">
-        <div class="absolute inset-0 bg-ink/70"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"></div>
-        <div class="blob w-[420px] h-[420px] bg-red/40 -top-20 -left-20"></div>
-        <div class="blob w-[360px] h-[360px] bg-ember/30 bottom-0 -right-16" style="animation-delay:-6s;"></div>
-
-        <div class="max-w-[1300px] mx-auto px-6 relative z-10 flex flex-col items-center text-center w-full">
+    <header class="hero-head">
+        <div class="hero-photo-wrap">
+        <img class="hero-photo-mobile" src="../assets/hero-mobile.webp" alt="Certificação em Bodybuilding e Estética Corporal" width="1000" height="1000">
+        </div>
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
 
             <div class="mb-8 inline-flex items-center gap-3 border border-paper/20 bg-ink/60 px-5 py-2">
                 <span class="text-muted text-sm font-body line-through">De R$ 97</span>
                 <span class="font-display font-black italic text-2xl md:text-3xl text-paper">R$ 19,90</span>
             </div>
 
-            <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding e Estética Corporal" class="w-full max-w-[540px] h-auto mb-10 drop-shadow-[0_10px_40px_rgba(200,35,40,0.25)]">
+            <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding e Estética Corporal" class="hero-logo">
 
-            <h1 class="text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.15rem] font-display font-black uppercase text-paper max-w-4xl leading-[1.12] tracking-tight mb-6">
-                <span class="block">Domine o</span>
-                <span class="block"><span class="grad-text">bodybuilding</span> e a</span>
-                <span class="block">estética corporal</span>
-                <span class="block">em um único domingo.</span>
+            <h1 class="hero-h1 font-display font-black uppercase text-paper leading-[1.14] tracking-tight mb-6">
+                <span class="hero-line">Domine o <span class="grad-text">bodybuilding</span></span>
+                <span class="hero-line">e a estética corporal</span>
+                <span class="hero-line">em um único domingo.</span>
             </h1>
 
             <p class="text-[1.05rem] md:text-lg text-text max-w-[68ch] mb-10 font-body leading-relaxed">
@@ -350,11 +385,11 @@
                     </div>
                 </div>
                 <div class="profcard card-hover md:col-span-2 lg:col-span-1">
-                    <div class="ph"><img src="../assets/professores/adam.webp" alt="Adam Abbas" loading="lazy" width="900" height="900"></div>
+                    <div class="ph"><img src="../assets/professores/thiago.webp" alt="Thiago Trindade" loading="lazy" width="900" height="901"></div>
                     <div class="info">
                         <span class="tag"><i class="fas fa-pills"></i> Farmacologia esportiva</span>
-                        <span class="nm">Adam Abbas</span>
-                        <span class="cr">Bioquímico e farmacêutico clínico. Pós pelo Instituto Albert Einstein e especialização em Farmacologia pela Harvard Medical School.</span>
+                        <span class="nm">Thiago Trindade</span>
+                        <span class="cr">Musculação e biomecânica, sem paixões. Doutor em Educação Física (UCB).</span>
                     </div>
                 </div>
             </div>
