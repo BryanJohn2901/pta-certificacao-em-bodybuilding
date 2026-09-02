@@ -139,11 +139,7 @@
         .checkout-card { background:#262623; border:1px solid #3a3a35; padding:1.75rem 1.5rem; height:100%; display:flex; flex-direction:column; }
         @media (min-width: 640px) { .checkout-card { padding:2.15rem; } }
         .checkout-card-form { border-color:#c82328; box-shadow: 0 18px 50px -28px rgba(200,35,40,.55); }
-        .checkout-kicker { color:#c82328; font-family:'Archivo',sans-serif; font-weight:900; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.65rem; }
-        .checkout-product { display:flex; gap:.9rem; align-items:center; padding-bottom:1.15rem; margin-bottom:.35rem; border-bottom:1px solid #3a3a35; }
-        .checkout-product img { width:56px; height:56px; object-fit:contain; background:#1d1d1b; border:1px solid #3a3a35; padding:.45rem; flex-shrink:0; }
-        .checkout-product b { display:block; font-family:'Archivo',sans-serif; font-weight:900; font-size:.95rem; text-transform:uppercase; color:#fff; line-height:1.25; }
-        .checkout-product span { display:block; color:#a1a1aa; font-size:.78rem; margin-top:.25rem; }
+        .checkout-kicker { color:#c82328; font-family:'Archivo',sans-serif; font-weight:900; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.85rem; }
         .checkout-item { display:flex; gap:.75rem; align-items:flex-start; padding:.72rem 0; border-bottom:1px solid #2c2c28; color:#e9e7e3; font-size:.92rem; line-height:1.45; }
         .checkout-item:last-child { border-bottom:0; }
         .checkout-item i { color:#c82328; margin-top:.18rem; width:1rem; text-align:center; flex-shrink:0; font-size:.85rem; }
@@ -545,35 +541,22 @@
 
             <div class="checkout-grid">
                 <div class="checkout-card">
-                    <p class="checkout-kicker">Seu ingresso</p>
-                    <div class="checkout-product">
-                        <img src="../assets/logo-certificacao.svg" alt="" width="56" height="56">
-                        <div>
-                            <b>Certificação em Bodybuilding e Estética Corporal</b>
-                            <span>1 ingresso · lote atual</span>
-                        </div>
-                    </div>
-                    <p class="checkout-kicker mt-5">Está incluso</p>
+                    <p class="checkout-kicker">Está incluso</p>
                     <div>
                         <div class="checkout-item"><i class="fas fa-check"></i><span>Domingo, 27 de setembro, das 8h30 às 18h</span></div>
                         <div class="checkout-item"><i class="fas fa-check"></i><span>100% online e ao vivo</span></div>
-                        <div class="checkout-item"><i class="fas fa-check"></i><span>Material de apoio digital</span></div>
                         <div class="checkout-item"><i class="fas fa-check"></i><span>Certificado de conclusão com carga horária</span></div>
                         <div class="checkout-item"><i class="fas fa-check"></i><span>Cupom Ouro PTA para a pós reconhecida pelo MEC</span></div>
                         <div class="checkout-item"><i class="fas fa-check"></i><span>7 dias de garantia incondicional</span></div>
                     </div>
                     <div class="checkout-total">
-                        <div>
-                            <div class="old">De R$ 97</div>
-                            <p class="text-[0.65rem] font-display font-black uppercase tracking-widest text-muted mt-1">Total agora</p>
-                        </div>
+                        <div class="old">De R$ 97</div>
                         <div class="new">R$ 19,90</div>
                     </div>
                     <p class="text-paper text-[0.7rem] font-display font-bold uppercase tracking-widest mt-5 opacity-80"><i class="fas fa-bolt text-red mr-1"></i>Vagas limitadas por lote. Quando o lote virar, esse preço acaba.</p>
                 </div>
 
                 <div class="checkout-card checkout-card-form">
-                    <p class="checkout-kicker">Passo 1 de 2</p>
                     <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-6">Quero garantir minha vaga</h3>
                     <form id="form-bb3" class="space-y-5">
                         <div>
@@ -599,11 +582,11 @@
                             <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
                             <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
                         </div>
-                        <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
+                        <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Garantir minha vaga agora <i class="fas fa-arrow-right"></i></span></button>
                     </form>
                     <div class="checkout-trust">
                         <span><i class="fas fa-lock mr-1"></i> Compra 100% segura</span>
-                        <span><i class="fas fa-shield-halved mr-1"></i> 7 dias de garantia</span>
+                        <span><i class="fas fa-shield-halved mr-1"></i> Garantia incondicional de 7 dias</span>
                     </div>
                     <div class="flex items-center justify-center gap-4 mt-5 text-paper opacity-80">
                         <i class="fab fa-pix text-3xl"></i>
