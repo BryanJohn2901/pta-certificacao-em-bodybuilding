@@ -59,6 +59,7 @@ const PAGES = [
   { src: "longa-b/index.html", destDir: "longa-b", slug: "longa-b/", css: "longa", js: "longa", hero: "b" },
   { src: "longa-c/index.html", destDir: "longa-c", slug: "longa-c/", css: "longa", js: "longa", hero: "c" },
   { src: "longa-d/index.html", destDir: "longa-d", slug: "longa-d/", css: "longa", js: "longa", hero: "d" },
+  { src: "bb6-obg/index.html", destDir: "bb6-obg", slug: "bb6-obg/", css: "obg", js: "obg", hero: null, isObg: true },
 ];
 
 const PAGE_ASSETS = [
@@ -105,8 +106,14 @@ function writeNoCache(dir) {
   fs.writeFileSync(path.join(dir, ".htaccess"), HTACCESS);
 }
 
-function copyPageAssets(outDir, ogPath) {
-  for (const rel of PAGE_ASSETS) {
+const OBG_ASSETS = [
+  "hero-desktop.webp",
+  "logo-certificacao.svg",
+  "logoPTA.svg",
+];
+
+function copyPageAssets(outDir, ogPath, assets = PAGE_ASSETS) {
+  for (const rel of assets) {
     copyFile(path.join(ROOT, "assets", rel), path.join(outDir, "assets", rel));
   }
   copyFile(path.join(ROOT, "assets", "logo-certificacao.svg"), path.join(outDir, "assets", "favicon.svg"));
@@ -115,11 +122,11 @@ function copyPageAssets(outDir, ogPath) {
   }
 }
 
-function seoBlock({ canonical, title, description, ogImage }) {
+function seoBlock({ canonical, title, description, ogImage, noindex }) {
   return [
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeAttr(description)}">`,
-    `<meta name="robots" content="index,follow">`,
+    `<meta name="robots" content="${noindex ? "noindex, follow" : "index,follow"}">`,
     `<meta name="theme-color" content="#1d1d1b">`,
     `<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">`,
     `<meta http-equiv="Pragma" content="no-cache">`,
@@ -153,12 +160,18 @@ function pageTitle(page) {
   if (page.isHub) {
     return "Certificação em Bodybuilding e Estética Corporal | PTA";
   }
+  if (page.isObg) {
+    return "Inscrição confirmada — Certificação em Bodybuilding | PTA";
+  }
   return `${HERO[page.hero].title} | Certificação PTA`;
 }
 
 function pageDescription(page) {
   if (page.isHub) {
     return "8 páginas da Certificação em Bodybuilding e Estética Corporal. 27 de setembro, 8h30 às 18h, ao vivo, certificado e Cupom Ouro PTA. Ingresso R$ 19,90.";
+  }
+  if (page.isObg) {
+    return "Sua inscrição na Certificação em Bodybuilding foi confirmada. Complete os 2 passos finais: entre no grupo oficial e preencha o formulário dos sorteios.";
   }
   return HERO[page.hero].description;
 }
@@ -230,8 +243,9 @@ async function main() {
   const extractedCss = {};
   const extractedJs = {};
 
-  for (const kind of ["curta", "longa"]) {
-    const sample = kind === "curta" ? "curta-a/index.html" : "longa-a/index.html";
+  const kindSample = { curta: "curta-a/index.html", longa: "longa-a/index.html", obg: "bb6-obg/index.html" };
+  for (const kind of ["curta", "longa", "obg"]) {
+    const sample = kindSample[kind];
     const html = fs.readFileSync(path.join(ROOT, sample), "utf8");
     let css = extractTag(html, "style");
     css = css.replace(/url\(['"]?\.\.\/assets\//g, "url('../assets/");
@@ -270,7 +284,7 @@ async function main() {
     } else {
       copyFile(path.join(staging, "css", `${page.css}.css`), path.join(outDir, "css", `${page.css}.css`));
       copyFile(path.join(staging, "js", `${page.js}.js`), path.join(outDir, "js", `${page.js}.js`));
-      copyPageAssets(outDir, ogPath);
+      copyPageAssets(outDir, ogPath, page.isObg ? OBG_ASSETS : PAGE_ASSETS);
     }
 
     writeNoCache(outDir);
@@ -293,6 +307,7 @@ async function main() {
 
     html = html.replace(/\.\.\/assets\//g, "assets/");
     html = html.replace(/href="(curta|longa)-([a-d])\/index\.html"/g, 'href="$1-$2/"');
+    html = html.replace(/href="bb6-obg\/index\.html"/g, 'href="bb6-obg/"');
     html = html.replace(
       /(<img class="hero-photo-mobile"[^>]*alt=")("[^>]*>)/g,
       "$1Certificação em Bodybuilding e Estética Corporal$2"
@@ -305,6 +320,7 @@ async function main() {
         title: pageTitle(page),
         description: pageDescription(page),
         ogImage,
+        noindex: page.isObg,
       }),
       `<link rel="preconnect" href="https://fonts.googleapis.com">`,
       `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`,
@@ -313,12 +329,14 @@ async function main() {
       page.isHub
         ? `<link rel="stylesheet" href="${bust("css/tailwind.css")}">\n    <link rel="stylesheet" href="${bust("css/hub.css")}">`
         : [
-            `<link rel="preload" as="image" href="${bust("assets/hero-mobile.webp")}" media="(max-width: 767px)">`,
-            `<link rel="preload" as="image" href="${bust("assets/hero-desktop.webp")}" media="(min-width: 768px)">`,
+            page.isObg
+              ? `<link rel="preload" as="image" href="${bust("assets/hero-desktop.webp")}">`
+              : `<link rel="preload" as="image" href="${bust("assets/hero-mobile.webp")}" media="(max-width: 767px)">`,
+            page.isObg ? "" : `<link rel="preload" as="image" href="${bust("assets/hero-desktop.webp")}" media="(min-width: 768px)">`,
             `<link rel="preload" as="image" href="${bust("assets/logo-certificacao.svg")}">`,
             `<link rel="stylesheet" href="${bust("css/tailwind.css")}">`,
             `<link rel="stylesheet" href="${bust("css/" + page.css + ".css")}">`,
-          ].join("\n    "),
+          ].filter(Boolean).join("\n    "),
     ].join("\n    ");
 
     html = html.replace(

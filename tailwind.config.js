@@ -10,6 +10,7 @@ module.exports = {
     "./longa-b/index.html",
     "./longa-c/index.html",
     "./longa-d/index.html",
+    "./bb6-obg/index.html",
   ],
   theme: {
     extend: {
