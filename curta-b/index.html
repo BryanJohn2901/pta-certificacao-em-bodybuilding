@@ -134,6 +134,24 @@
         html { scroll-padding-top: 5.5rem; }
         #checkout { scroll-margin-top: 5.5rem; }
         .sticky-lote { margin: .2rem 0 0; font-family: 'Archivo'; font-weight: 800; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; font-style: normal; opacity: .9; }
+        .checkout-grid { display:grid; gap:1.25rem; }
+        @media (min-width: 900px) { .checkout-grid { grid-template-columns: .95fr 1.05fr; align-items: stretch; } }
+        .checkout-card { background:#262623; border:1px solid #3a3a35; padding:1.75rem 1.5rem; height:100%; display:flex; flex-direction:column; }
+        @media (min-width: 640px) { .checkout-card { padding:2.15rem; } }
+        .checkout-card-form { border-color:#c82328; box-shadow: 0 18px 50px -28px rgba(200,35,40,.55); }
+        .checkout-kicker { color:#c82328; font-family:'Archivo',sans-serif; font-weight:900; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.65rem; }
+        .checkout-product { display:flex; gap:.9rem; align-items:center; padding-bottom:1.15rem; margin-bottom:.35rem; border-bottom:1px solid #3a3a35; }
+        .checkout-product img { width:56px; height:56px; object-fit:contain; background:#1d1d1b; border:1px solid #3a3a35; padding:.45rem; flex-shrink:0; }
+        .checkout-product b { display:block; font-family:'Archivo',sans-serif; font-weight:900; font-size:.95rem; text-transform:uppercase; color:#fff; line-height:1.25; }
+        .checkout-product span { display:block; color:#a1a1aa; font-size:.78rem; margin-top:.25rem; }
+        .checkout-item { display:flex; gap:.75rem; align-items:flex-start; padding:.72rem 0; border-bottom:1px solid #2c2c28; color:#e9e7e3; font-size:.92rem; line-height:1.45; }
+        .checkout-item:last-child { border-bottom:0; }
+        .checkout-item i { color:#c82328; margin-top:.18rem; width:1rem; text-align:center; flex-shrink:0; font-size:.85rem; }
+        .checkout-total { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; margin-top:auto; padding-top:1.2rem; border-top:1px solid #3a3a35; }
+        .checkout-total .old { color:#a1a1aa; text-decoration:line-through; font-size:.95rem; }
+        .checkout-total .new { font-family:'Archivo',sans-serif; font-weight:900; font-style:italic; font-size:clamp(2rem,6vw,2.75rem); color:#fff; line-height:1; }
+        .checkout-trust { display:flex; flex-wrap:wrap; gap:.75rem 1.15rem; justify-content:center; margin-top:1.25rem; color:#a1a1aa; font-size:.68rem; font-family:'Archivo',sans-serif; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+        .checkout-trust i { color:#c82328; }
 
         .check-list li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; }
         .check-list li i { position: absolute; left: 0; top: 0.2rem; color:#c82328; font-size: .95rem; }
@@ -519,53 +537,80 @@
         <div class="blob w-[380px] h-[380px] bg-red/30 top-10 -left-10"></div>
         <div class="blob w-[320px] h-[320px] bg-ember/25 bottom-0 right-0" style="animation-delay:-4s;"></div>
 
-        <div class="max-w-[560px] mx-auto px-6 relative z-10">
-            <div class="text-center mb-10">
+        <div class="max-w-[1100px] mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 max-w-3xl mx-auto">
                 <h2 class="text-3xl md:text-5xl font-display font-black uppercase leading-tight mb-4 text-paper">Domingo, 27 de setembro. 8h de conteúdo ao vivo, com <span class="grad-text">certificado</span>.</h2>
-                <p class="text-text mb-6">Por R$ 19,90, com 7 dias de garantia. Se não valer, devolvemos.</p>
-                <div class="inline-flex items-center gap-3 border border-paper/20 bg-ink/60 px-5 py-2">
-                    <span class="text-muted text-sm font-body line-through">De R$ 97</span>
-                    <span class="font-display font-black italic text-2xl md:text-3xl text-paper">R$ 19,90</span>
-                </div>
+                <p class="text-text">Por R$ 19,90, com 7 dias de garantia. Se não valer, devolvemos.</p>
             </div>
-            <div class="spin-border shadow-2xl">
-            <div class="bg-ink2 p-8 md:p-10">
-                <div class="text-center mb-6">
-                    <div class="icon-circle mx-auto mb-4"><i class="fas fa-clipboard-check"></i></div>
-                    <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-2">Quero garantir minha vaga</h3>
+
+            <div class="checkout-grid">
+                <div class="checkout-card">
+                    <p class="checkout-kicker">Seu ingresso</p>
+                    <div class="checkout-product">
+                        <img src="../assets/logo-certificacao.svg" alt="" width="56" height="56">
+                        <div>
+                            <b>Certificação em Bodybuilding e Estética Corporal</b>
+                            <span>1 ingresso · lote atual</span>
+                        </div>
+                    </div>
+                    <p class="checkout-kicker mt-5">Está incluso</p>
+                    <div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>Domingo, 27 de setembro, das 8h30 às 18h</span></div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>100% online e ao vivo</span></div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>Material de apoio digital</span></div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>Certificado de conclusão com carga horária</span></div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>Cupom Ouro PTA para a pós reconhecida pelo MEC</span></div>
+                        <div class="checkout-item"><i class="fas fa-check"></i><span>7 dias de garantia incondicional</span></div>
+                    </div>
+                    <div class="checkout-total">
+                        <div>
+                            <div class="old">De R$ 97</div>
+                            <p class="text-[0.65rem] font-display font-black uppercase tracking-widest text-muted mt-1">Total agora</p>
+                        </div>
+                        <div class="new">R$ 19,90</div>
+                    </div>
+                    <p class="text-paper text-[0.7rem] font-display font-bold uppercase tracking-widest mt-5 opacity-80"><i class="fas fa-bolt text-red mr-1"></i>Vagas limitadas por lote. Quando o lote virar, esse preço acaba.</p>
                 </div>
-                <form id="form-bb3" class="space-y-5 mt-6">
-                    <div>
-                        <label for="lead-email" class="block text-sm font-semibold text-text mb-1 font-body">E-mail</label>
-                        <div class="relative">
-                            <i class="fas fa-envelope input-icon"></i>
-                            <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+
+                <div class="checkout-card checkout-card-form">
+                    <p class="checkout-kicker">Passo 1 de 2</p>
+                    <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-6">Quero garantir minha vaga</h3>
+                    <form id="form-bb3" class="space-y-5">
+                        <div>
+                            <label for="lead-email" class="block text-sm font-semibold text-text mb-1 font-body">E-mail</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label for="lead-nome" class="block text-sm font-semibold text-text mb-1 font-body">Nome completo</label>
-                        <div class="relative">
-                            <i class="fas fa-user input-icon"></i>
-                            <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+                        <div>
+                            <label for="lead-nome" class="block text-sm font-semibold text-text mb-1 font-body">Nome completo</label>
+                            <div class="relative">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
-                        <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
-                            <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
-                            <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
+                        <div>
+                            <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
+                            <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
+                                <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
+                                <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
+                            </div>
+                            <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
+                            <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
                         </div>
-                        <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
-                        <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
+                        <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
+                    </form>
+                    <div class="checkout-trust">
+                        <span><i class="fas fa-lock mr-1"></i> Compra 100% segura</span>
+                        <span><i class="fas fa-shield-halved mr-1"></i> 7 dias de garantia</span>
                     </div>
-                    <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
-                </form>
-                <div class="flex items-center justify-center gap-4 mt-6 text-paper opacity-80">
-                    <i class="fab fa-pix text-3xl"></i>
-                    <i class="fab fa-cc-visa text-2xl"></i>
-                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                    <div class="flex items-center justify-center gap-4 mt-5 text-paper opacity-80">
+                        <i class="fab fa-pix text-3xl"></i>
+                        <i class="fab fa-cc-visa text-2xl"></i>
+                        <i class="fab fa-cc-mastercard text-2xl"></i>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
