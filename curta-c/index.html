@@ -131,6 +131,7 @@
         @media (min-width: 768px) { .stickybar { display: none; } }
         .stickybar span { font-size:1.2rem; font-style: italic; }
         .stickybar button { background: transparent; color: #ffffff; font-family: 'Archivo'; font-weight: 800; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid #ffffff; padding:.5rem 1rem; cursor: pointer; }
+        .sticky-lote { margin: .2rem 0 0; font-family: 'Archivo'; font-weight: 800; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; font-style: normal; opacity: .9; }
 
         .check-list li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; }
         .check-list li i { position: absolute; left: 0; top: 0.2rem; color:#c82328; font-size: .95rem; }
@@ -294,7 +295,7 @@
     <div class="w-full bg-red py-4 relative z-20 border-b border-ink/20 shadow-lg">
         <div class="max-w-[1300px] mx-auto px-6 text-center">
             <p class="text-paper font-display font-bold text-[0.82rem] tracking-[0.1em] uppercase leading-relaxed flex flex-wrap items-center justify-center gap-x-2">
-                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão
+                <i class="fas fa-video"></i> 8h de conteúdo ao vivo <span class="opacity-50 mx-1">·</span> <i class="fas fa-certificate"></i> Certificado de conclusão <span class="opacity-50 mx-1">·</span> O começo da sua especialização em bodybuilding
             </p>
         </div>
     </div>
@@ -338,20 +339,18 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-display font-black uppercase leading-tight max-w-3xl mx-auto text-paper">
                     <span class="block">Preparar um atleta</span>
-                    <span class="block">exige cinco áreas.</span>
-                    <span class="block">Você vai ver as cinco</span>
+                    <span class="block">tem quatro etapas.</span>
+                    <span class="block">Você vai ver as quatro</span>
                     <span class="block">em um domingo.</span>
                 </h2>
-                <p class="text-muted mt-3 max-w-2xl mx-auto">Aprenda com os maiores treinadores de atletas de alto nível no Brasil.</p>
+                <p class="text-muted mt-3 max-w-2xl mx-auto">As quatro etapas de uma preparação, no mesmo domingo — para aplicar no atleta e no aluno de academia.</p>
             </div>
             <div class="numcards max-w-3xl mx-auto mb-10 text-left">
                 <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-flask"></i></div><div class="t"><b>Ciência da hipertrofia</b><span>Por que o músculo cresce e o que decide a resposta de cada aluno</span></div></div>
-                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-chart-line"></i></div><div class="t"><b>Periodização</b><span>Da avaliação à estrutura do programa</span></div></div>
+                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-clipboard-list"></i></div><div class="t"><b>Prescrição e métodos</b><span>Quantas séries, a que distância da falha e quando o método vale mais que a carga</span></div></div>
                 <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-medal"></i></div><div class="t"><b>Preparação de palco</b><span>Como se conduz uma preparação do off-season ao palco</span></div></div>
                 <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-heart-pulse"></i></div><div class="t"><b>Saúde articular</b><span>Como manter o aluno treinando pesado a preparação inteira</span></div></div>
-                <div class="numcard row-hover"><div class="icon-circle"><i class="fas fa-pills"></i></div><div class="t"><b>Farmacologia esportiva</b><span>O que o treinador precisa entender sobre recursos ergogênicos</span></div></div>
             </div>
-            <div class="text-center mb-16"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero ver a grade completa <i class="fas fa-arrow-right"></i></span></button></div>
             <div class="profgrid">
                 <div class="profcard card-hover">
                     <div class="ph"><img src="../assets/professores/walter.webp" alt="Walter Krause" loading="lazy" width="900" height="900"></div>
@@ -359,6 +358,14 @@
                         <span class="tag"><i class="fas fa-flask"></i> Ciência da hipertrofia</span>
                         <span class="nm">Walter Krause</span>
                         <span class="cr">Doutor e pós-doutor em Educação Física. Líder do MORFOGEN, grupo de pesquisa em morfologia e genética no treinamento de força da UNIFESP.</span>
+                    </div>
+                </div>
+                <div class="profcard card-hover">
+                    <div class="ph"><img src="../assets/professores/thiago.webp" alt="Thiago Trindade" loading="lazy" width="900" height="901"></div>
+                    <div class="info">
+                        <span class="tag"><i class="fas fa-clipboard-list"></i> Prescrição e métodos</span>
+                        <span class="nm">Thiago Trindade</span>
+                        <span class="cr">Doutor em Educação Física pela UCB, mestre e especialista em treinamento de força pela UFRN. Autor de pesquisa publicada sobre rest-pause e drop-set.</span>
                     </div>
                 </div>
                 <div class="profcard card-hover">
@@ -375,14 +382,6 @@
                         <span class="tag"><i class="fas fa-heart-pulse"></i> Saúde articular</span>
                         <span class="nm">Bruna Massaroto</span>
                         <span class="cr">Doutora e pós-doutora em Ciências da Reabilitação. Treino articular aplicado à performance do bodybuilder.</span>
-                    </div>
-                </div>
-                <div class="profcard card-hover">
-                    <div class="ph"><img src="../assets/professores/thiago.webp" alt="Thiago Trindade" loading="lazy" width="900" height="901"></div>
-                    <div class="info">
-                        <span class="tag"><i class="fas fa-pills"></i> Farmacologia esportiva</span>
-                        <span class="nm">Thiago Trindade</span>
-                        <span class="cr">Musculação e biomecânica, sem paixões. Doutor em Educação Física (UCB).</span>
                     </div>
                 </div>
             </div>
@@ -455,13 +454,13 @@
                     </dl>
                 </div>
                 <div class="vs-col b">
-                    <div class="vs-h"><i class="fas fa-graduation-cap text-red mr-2"></i>Pós-graduação<span class="pill">18 meses</span></div>
+                    <div class="vs-h"><i class="fas fa-graduation-cap text-red mr-2"></i>Pós-graduação<span class="pill">MEC · portaria nº 1.058</span></div>
                     <dl>
                         <dt>Duração</dt><dd>18 meses, 360 horas</dd>
                         <dt>Formato</dt><dd>Pós completa</dd>
                         <dt>Professores</dt><dd>18</dd>
-                        <dt>Entrega</dt><dd>Certificado reconhecido pelo MEC — portaria nº 1.058</dd>
-                        <dt>Preço</dt><dd class="text-paper italic font-display font-bold">Condição especial pelo Cupom Ouro</dd>
+                        <dt>Já formados</dt><dd>Mais de 4.000 profissionais</dd>
+                        <dt>Condição</dt><dd class="text-paper italic font-display font-bold">Especial, pelo Cupom Ouro</dd>
                     </dl>
                 </div>
             </div>
@@ -481,7 +480,7 @@
         <div class="max-w-[1300px] mx-auto px-6 text-center">
             <img src="../assets/logoPTA.svg" alt="Personal Trainer Academy" class="h-14 mx-auto mb-6">
             <h2 class="text-2xl md:text-3xl font-display font-black uppercase mb-4 text-paper">A certificação é da Personal Trainer Academy.</h2>
-            <p class="text-muted max-w-2xl mx-auto mb-10">A mesma instituição da Pós-graduação em Bodybuilding e Estética Corporal — reconhecida pelo MEC pela portaria nº 1.058.</p>
+            <p class="text-muted max-w-2xl mx-auto mb-10">A mesma instituição da Pós-graduação em Bodybuilding e Estética Corporal — reconhecida pelo MEC pela portaria nº 1.058, com 18 meses, 360 horas, 18 professores e mais de 4.000 profissionais já formados.</p>
             <div class="statgrid">
                 <div class="statcell"><div class="icon-circle"><i class="fas fa-calendar-days"></i></div><b>18</b><span>meses</span></div>
                 <div class="statcell"><div class="icon-circle"><i class="fas fa-clock"></i></div><b>360</b><span>horas</span></div>
@@ -526,7 +525,10 @@
     </section>
 
     <div class="stickybar">
-        <span class="flex items-center gap-2"><span class="pulse-dot bg-paper"></span>R$ 19,90</span>
+        <div>
+            <span class="flex items-center gap-2"><span class="pulse-dot bg-paper"></span>R$ 19,90</span>
+            <p class="sticky-lote">De R$ 97 · lote atual</p>
+        </div>
         <button onclick="abrirPopup()">Garantir vaga</button>
     </div>
 
