@@ -130,7 +130,9 @@
         .stickybar { background:#c82328; color:#ffffff; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 1.25rem; font-family:'Archivo'; font-weight:900; position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); }
         @media (min-width: 768px) { .stickybar { display: none; } }
         .stickybar span { font-size:1.2rem; font-style: italic; }
-        .stickybar button { background: transparent; color: #ffffff; font-family: 'Archivo'; font-weight: 800; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid #ffffff; padding:.5rem 1rem; cursor: pointer; }
+        .stickybar button, .stickybar a { background: transparent; color: #ffffff; font-family: 'Archivo'; font-weight: 800; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid #ffffff; padding:.5rem 1rem; cursor: pointer; text-decoration: none; display: inline-block; }
+        html { scroll-padding-top: 5.5rem; }
+        #checkout { scroll-margin-top: 5.5rem; }
         .sticky-lote { margin: .2rem 0 0; font-family: 'Archivo'; font-weight: 800; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; font-style: normal; opacity: .9; }
 
         .check-list li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; }
@@ -256,7 +258,7 @@
     <nav id="navbar" class="navbar fixed top-0 left-0 right-0 z-[80] bg-ink/90 backdrop-blur-md border-b border-linesoft">
         <div class="navbar-inner max-w-[1300px] mx-auto px-4 sm:px-6 py-3">
             <img src="../assets/logo-certificacao.svg" alt="Certificação em Bodybuilding">
-            <button onclick="abrirPopup()" class="btn-primary"><span>Garantir minha vaga</span></button>
+            <a href="#checkout" class="btn-primary"><span>Garantir minha vaga</span></a>
         </div>
     </nav>
 
@@ -284,7 +286,7 @@
                 Um domingo inteiro de protocolos avançados de hipertrofia e estética corporal, ao vivo, com certificado de conclusão.
             </p>
 
-            <button onclick="abrirPopup()" class="btn-primary w-full sm:w-auto shadow-xl shadow-red/20 hover:shadow-red/40"><span class="inline-flex items-center gap-2">Quero garantir minha vaga por R$ 19,90 <i class="fas fa-arrow-right"></i></span></button>
+            <a href="#checkout" class="btn-primary w-full sm:w-auto shadow-xl shadow-red/20 hover:shadow-red/40"><span class="inline-flex items-center gap-2">Quero garantir minha vaga por R$ 19,90 <i class="fas fa-arrow-right"></i></span></a>
 
             <p class="mt-8 text-paper text-sm md:text-base font-body leading-relaxed max-w-3xl">Domingo, 27 de setembro · 8h30 às 18h · 8h de conteúdo ao vivo · certificado de conclusão · Cupom Ouro PTA</p>
 
@@ -420,7 +422,7 @@
                 <div class="old">De R$ 97</div>
                 <div class="new">R$ 19,90</div>
 
-                <button onclick="abrirPopup()" class="btn-primary full py-5 mt-4"><span class="inline-flex items-center gap-2 justify-center"><i class="fas fa-lock-open"></i> Comprar meu ingresso por R$ 19,90</span></button>
+                <a href="#checkout" class="btn-primary full py-5 mt-4"><span class="inline-flex items-center gap-2 justify-center"><i class="fas fa-lock-open"></i> Comprar meu ingresso por R$ 19,90</span></a>
 
                 <div class="flex items-center justify-center gap-4 mt-6 text-paper opacity-80">
                     <i class="fab fa-pix text-3xl"></i>
@@ -472,7 +474,7 @@
                 <div class="cert-foot"><span>Carga horária 8h</span><span>27 · 09 · 2026</span></div>
             </div>
             </div>
-            <div class="text-center"><button onclick="abrirPopup()" class="btn-primary"><span class="inline-flex items-center gap-2">Quero minha vaga e meu Cupom Ouro <i class="fas fa-arrow-right"></i></span></button></div>
+            <div class="text-center"><a href="#checkout" class="btn-primary"><span class="inline-flex items-center gap-2">Quero minha vaga e meu Cupom Ouro <i class="fas fa-arrow-right"></i></span></a></div>
         </div>
     </section>
 
@@ -511,16 +513,60 @@
         </div>
     </section>
 
-    <section class="relative py-32 overflow-hidden bg-hero-texture">
+    <section id="checkout" class="relative py-24 md:py-32 pb-28 overflow-hidden bg-hero-texture">
         <div class="absolute inset-0 bg-ink/80"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-ink"></div>
         <div class="blob w-[380px] h-[380px] bg-red/30 top-10 -left-10"></div>
         <div class="blob w-[320px] h-[320px] bg-ember/25 bottom-0 right-0" style="animation-delay:-4s;"></div>
 
-        <div class="max-w-[1300px] mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-display font-black uppercase leading-tight mb-4 text-paper max-w-3xl mx-auto">Domingo, 27 de setembro. 8h de conteúdo ao vivo, com <span class="grad-text">certificado</span>.</h2>
-            <p class="text-text mb-10">Por R$ 19,90, com 7 dias de garantia. Se não valer, devolvemos.</p>
-            <button onclick="abrirPopup()" class="btn-primary w-full sm:w-auto px-8 py-5 shadow-2xl shadow-red/20"><span class="inline-flex items-center gap-2">Garantir minha vaga agora <i class="fas fa-arrow-right"></i></span></button>
+        <div class="max-w-[560px] mx-auto px-6 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-5xl font-display font-black uppercase leading-tight mb-4 text-paper">Domingo, 27 de setembro. 8h de conteúdo ao vivo, com <span class="grad-text">certificado</span>.</h2>
+                <p class="text-text mb-6">Por R$ 19,90, com 7 dias de garantia. Se não valer, devolvemos.</p>
+                <div class="inline-flex items-center gap-3 border border-paper/20 bg-ink/60 px-5 py-2">
+                    <span class="text-muted text-sm font-body line-through">De R$ 97</span>
+                    <span class="font-display font-black italic text-2xl md:text-3xl text-paper">R$ 19,90</span>
+                </div>
+            </div>
+            <div class="spin-border shadow-2xl">
+            <div class="bg-ink2 p-8 md:p-10">
+                <div class="text-center mb-6">
+                    <div class="icon-circle mx-auto mb-4"><i class="fas fa-clipboard-check"></i></div>
+                    <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-2">Quero garantir minha vaga</h3>
+                </div>
+                <form id="form-bb3" class="space-y-5 mt-6">
+                    <div>
+                        <label for="lead-email" class="block text-sm font-semibold text-text mb-1 font-body">E-mail</label>
+                        <div class="relative">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lead-nome" class="block text-sm font-semibold text-text mb-1 font-body">Nome completo</label>
+                        <div class="relative">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
+                        <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
+                            <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
+                            <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
+                        </div>
+                        <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
+                        <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
+                    </div>
+                    <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
+                </form>
+                <div class="flex items-center justify-center gap-4 mt-6 text-paper opacity-80">
+                    <i class="fab fa-pix text-3xl"></i>
+                    <i class="fab fa-cc-visa text-2xl"></i>
+                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                </div>
+            </div>
+            </div>
         </div>
     </section>
 
@@ -529,54 +575,20 @@
             <span class="flex items-center gap-2"><span class="pulse-dot bg-paper"></span>R$ 19,90</span>
             <p class="sticky-lote">De R$ 97 · lote atual</p>
         </div>
-        <button onclick="abrirPopup()">Garantir vaga</button>
-    </div>
-
-    <div id="popup-captura" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm" aria-hidden="true">
-        <div class="modal-panel spin-border max-w-md w-full shadow-2xl">
-        <div class="relative bg-ink2 p-8 md:p-10">
-            <button type="button" onclick="fecharPopup()" class="absolute top-4 right-4 w-10 h-10 bg-transparent text-muted hover:text-red flex items-center justify-center transition-colors"><i class="fas fa-times text-xl"></i></button>
-            <div class="text-center mb-6 mt-2">
-                <div class="icon-circle mx-auto mb-4"><i class="fas fa-clipboard-check"></i></div>
-                <h3 class="font-display font-black text-2xl text-paper uppercase tracking-tight mb-2">Quero garantir minha vaga</h3>
-            </div>
-            <form id="form-bb3" class="space-y-5 mt-6">
-                <div>
-                    <label for="lead-email" class="block text-sm font-semibold text-text mb-1 font-body">E-mail</label>
-                    <div class="relative">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="lead-email" name="email" required placeholder="seu@email.com" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
-                    </div>
-                </div>
-                <div>
-                    <label for="lead-nome" class="block text-sm font-semibold text-text mb-1 font-body">Nome completo</label>
-                    <div class="relative">
-                        <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="lead-nome" name="nome" required placeholder="Seu nome" class="input-has-icon w-full pl-11 pr-4 py-3 bg-ink border border-linesoft text-paper placeholder-muted focus:border-red focus:outline-none transition-colors">
-                    </div>
-                </div>
-                <div>
-                    <label for="lead-telefone" class="block text-sm font-semibold text-text mb-1 font-body">Telefone</label>
-                    <div class="flex overflow-hidden border border-linesoft focus-within:border-red transition-colors bg-ink">
-                        <span class="inline-flex items-center px-4 py-3 bg-red text-paper font-display font-bold select-none shrink-0">+55</span>
-                        <input type="tel" id="lead-telefone" name="telefone" required placeholder="11 99999-9999" inputmode="tel" autocomplete="tel-national" maxlength="16" class="flex-1 px-4 py-3 bg-transparent text-paper placeholder-muted outline-none min-w-0">
-                    </div>
-                    <p class="text-muted text-xs mt-1">DDD + número (apenas números)</p>
-                    <p id="erro-telefone" class="text-red text-xs mt-1 hidden">Informe o DDD e o número.</p>
-                </div>
-                <button type="submit" class="btn-primary full mt-4 btn-submit flex justify-center items-center"><span class="inline-flex items-center gap-2">Avançar para Pagamento <i class="fas fa-arrow-right"></i></span></button>
-            </form>
-        </div>
-        </div>
+        <a href="#checkout">Garantir vaga</a>
     </div>
 
     <script>
-        const popup = document.getElementById('popup-captura');
-        const popupPanel = popup.querySelector('.modal-panel');
-        function abrirPopup() { popup.classList.remove('hidden'); popup.classList.add('flex'); document.body.style.overflow='hidden'; requestAnimationFrame(() => popupPanel.classList.add('show')); }
-        function fecharPopup() { popupPanel.classList.remove('show'); document.body.style.overflow=''; setTimeout(() => { popup.classList.add('hidden'); popup.classList.remove('flex'); }, 250); }
-        popup.addEventListener('click', e => { if (e.target === popup) fecharPopup(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharPopup(); });
+        function irCheckout() {
+            const el = document.getElementById('checkout');
+            if (!el) return;
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => document.getElementById('lead-email')?.focus({ preventScroll: true }), 500);
+        }
+        window.abrirPopup = irCheckout;
+        document.querySelectorAll('a[href="#checkout"]').forEach((a) => {
+            a.addEventListener('click', () => setTimeout(() => document.getElementById('lead-email')?.focus({ preventScroll: true }), 500));
+        });
 
 
 
@@ -597,6 +609,13 @@
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => { navbar.classList.toggle('show', window.scrollY > 420); }, { passive: true });
+        const stickybar = document.querySelector('.stickybar');
+        const checkoutEl = document.getElementById('checkout');
+        if (stickybar && checkoutEl && window.matchMedia('(max-width: 767px)').matches) {
+            new IntersectionObserver(([entry]) => {
+                stickybar.style.display = entry.isIntersecting ? 'none' : '';
+            }, { threshold: 0.2 }).observe(checkoutEl);
+        }
 
         const soDigitos = v => (v || '').replace(/\D/g, '');
         const telInput = document.getElementById('lead-telefone');
