@@ -15,6 +15,7 @@ const BUILD_ID = String(Date.now());
 const HTACCESS = `<IfModule mod_headers.c>
   Header set Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0, s-maxage=0"
   Header set CDN-Cache-Control "no-store"
+  Header set Vercel-CDN-Cache-Control "no-store"
   Header set Cloudflare-CDN-Cache-Control "no-store"
   Header set Surrogate-Control "no-store"
   Header set Pragma "no-cache"
@@ -298,6 +299,11 @@ async function main() {
     html = html.replace(/<link rel="preconnect"[^>]*>\s*/g, "");
     html = html.replace(/<link rel="preload" as="image"[^>]*>\s*/g, "");
     html = html.replace(/<title>[\s\S]*?<\/title>\s*/i, "");
+    html = html.replace(/<meta name="description"[^>]*>\s*/gi, "");
+    html = html.replace(/<meta name="robots"[^>]*>\s*/gi, "");
+    html = html.replace(/<meta http-equiv="Cache-Control"[^>]*>\s*/gi, "");
+    html = html.replace(/<meta http-equiv="Pragma"[^>]*>\s*/gi, "");
+    html = html.replace(/<meta http-equiv="Expires"[^>]*>\s*/gi, "");
     html = html.replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>\s*/g, "");
     html = html.replace(/<script>\s*tailwind\.config[\s\S]*?<\/script>\s*/g, "");
     html = html.replace(/<style>[\s\S]*?<\/style>\s*/g, "");
